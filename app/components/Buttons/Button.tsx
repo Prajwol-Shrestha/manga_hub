@@ -8,7 +8,7 @@ const button = cva("button", {
   variants: {
     intent: {
       primary: [
-        "bg-primary-600", 
+        "bg-primary", 
         "text-white", 
         "rounded-sm", 
         "capitalize", 
@@ -25,7 +25,7 @@ const button = cva("button", {
       outline: [
         "bg-transparent",
         "rounded-sm",
-        "text-primary-600",
+        "text-primary",
         "hover:bg-primary-500", 
         "cursor-pointer", 
         "tracking-wider",
