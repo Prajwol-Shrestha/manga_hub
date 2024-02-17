@@ -5,7 +5,7 @@ import Trending from "./components/Trending/Trending";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="flex min-h-screen flex-col">
       <Navbar />
       <Hero />
       <Trending />

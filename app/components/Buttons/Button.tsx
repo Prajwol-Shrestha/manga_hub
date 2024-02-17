@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import cn from "@/app/utils/cn";
@@ -8,13 +6,13 @@ const button = cva("button", {
   variants: {
     intent: {
       primary: [
-        "bg-primary", 
-        "text-white", 
-        "rounded-sm", 
-        "capitalize", 
-        "hover:bg-primary-500", 
-        "cursor-pointer", 
-        "tracking-wider"
+        "bg-primary",
+        "text-white",
+        "rounded-sm",
+        "capitalize",
+        "hover:bg-primary-500",
+        "cursor-pointer",
+        "tracking-wider",
       ],
       secondary: [
         "bg-white",
@@ -26,18 +24,20 @@ const button = cva("button", {
         "bg-transparent",
         "rounded-sm",
         "text-primary",
-        "hover:bg-primary-500", 
-        "cursor-pointer", 
+        "hover:bg-primary-500",
+        "cursor-pointer",
         "tracking-wider",
-        "cursor-pointer"
-      ]
+        "cursor-pointer",
+      ],
     },
     size: {
       small: ["text-sm", "py-2", "px-4"],
       medium: ["text-base", "py-2", "px-4"],
     },
   },
-  compoundVariants: [{ intent: "primary", size: "medium", class: "capitalize" }],
+  compoundVariants: [
+    { intent: "primary", size: "medium", class: "capitalize" },
+  ],
   defaultVariants: {
     intent: "primary",
     size: "medium",
@@ -46,7 +46,7 @@ const button = cva("button", {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof button> { }
+    VariantProps<typeof button> {}
 
 const Button: React.FC<ButtonProps> = ({
   className,
@@ -55,4 +55,4 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => <button className={cn(button({ intent, size, className }))} {...props} />;
 
-export default Button
+export default Button;

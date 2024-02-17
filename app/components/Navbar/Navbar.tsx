@@ -7,11 +7,11 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   return (
     <nav className="bg-secondary-600 text-white">
-      <div className="container flex justify-between items-center px-2 py-4">
+      <div className="container flex items-center justify-between px-2 py-4">
         <p> Logo </p>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
-          className={`z-10 flex sm:hidden ${showNavbar ? "opened" : ""}`}
+          className={`z-30 flex sm:hidden ${showNavbar ? "opened" : ""}`}
         >
           <svg width="40" height="40" viewBox="0 0 100 100">
             <path
@@ -26,7 +26,7 @@ export default function Navbar() {
           </svg>
         </div>
 
-        <ul className="hidden sm:flex items-center justify-center gap-4">
+        <ul className="hidden items-center justify-center gap-4 sm:flex">
           {navlinks.map((link) => (
             <li key={link.title}>
               {" "}
@@ -38,13 +38,13 @@ export default function Navbar() {
       {showNavbar && (
         <div
           onClick={() => setShowNavbar(false)}
-          className="sm:hidden flex items-center justify-end absolute top-0 bg-secondary-300/90 w-full h-full"
+          className="absolute top-0 z-20 flex h-full w-full items-center justify-end bg-secondary-300/90 sm:hidden"
         >
           <ul
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="bg-secondary-400 h-full w-9/12 flex items-center justify-center flex-col gap-4"
+            className="flex h-full w-9/12 flex-col items-center justify-center gap-4 bg-secondary-400"
           >
             {navlinks.map((link) => (
               <li key={link.title} className="text-xl">

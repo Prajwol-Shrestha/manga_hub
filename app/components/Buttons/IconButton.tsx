@@ -17,20 +17,24 @@ export default function IconButton({
   text,
   intent,
   additionalClassNames,
-  onClick
+  onClick,
 }: IconButtonProps) {
   return (
     <Button
       intent={intent}
       className={cn(
-        `flex gap-2 items-center justify-between`,
-        additionalClassNames
+        `flex items-center justify-between gap-2`,
+        additionalClassNames,
       )}
       onClick={onClick}
     >
-      {icon && iconPlacement === "left" && <Icon icon={icon} fontSize={'1.2rem'}/>}
+      {icon && iconPlacement === "left" && (
+        <Icon icon={icon} fontSize={"1.2rem"} />
+      )}
       {text}
-      {icon && iconPlacement === "right" && <Icon icon={icon} fontSize={'1.2rem'}/>}
+      {icon && iconPlacement === "right" && (
+        <Icon icon={icon} fontSize={"1.2rem"} />
+      )}
     </Button>
   );
 }

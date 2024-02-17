@@ -21,11 +21,9 @@ const sliderItems = [
 ];
 
 export default function Hero() {
-
-
   return (
     <div className="sm:container">
-        <CustomSliderFullWidth items={sliderItems}/>
+      <CustomSliderFullWidth items={sliderItems} />
       {/* <div className="relative inline-block" >
           <Image src={image} width={600} height={500} alt="image" />
           <div className="absolute inset-0">

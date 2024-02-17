@@ -11,36 +11,29 @@ export default function CustomSlider({
 }: {
   items: { title: string; image: string }[];
 }) {
-  const [sliderIndex, setSliderIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       handleNext();
-  //     }, 3000);
+  // auto sliding not works once it reaches end
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
 
-  //     return () => clearInterval(interval);
-  //   }, [sliderIndex, items]);
+    return () => clearInterval(interval);
+  }, [items]);
 
   function handleNext() {
     if (containerRef.current) {
       const width = containerRef.current.clientWidth;
-      const currentIndex = sliderIndex;
-      const newIndex = (currentIndex + 1) % items.length;
-      const scrollPosition = newIndex * width;
-      containerRef.current.scrollLeft = scrollPosition;
-      setSliderIndex(newIndex);
+      //   containerRef.current.scrollLeft = scrollPosition;
+      containerRef.current.scrollLeft = containerRef.current.scrollLeft + width;
     }
   }
 
   function handlePrev() {
     if (containerRef.current) {
       const width = containerRef.current.clientWidth;
-      const currentIndex = sliderIndex;
-      const newIndex = currentIndex === 0 ? items.length - 1 : currentIndex - 1;
-      const scrollPosition = newIndex * width;
-      containerRef.current.scrollLeft = scrollPosition;
-      setSliderIndex(newIndex);
+      containerRef.current.scrollLeft = containerRef.current.scrollLeft - width;
     }
   }
 
@@ -48,16 +41,19 @@ export default function CustomSlider({
     <div className="relative flex flex-row">
       <div ref={containerRef} className="flex overflow-x-hidden scroll-smooth ">
         {items.map((each, index) => (
-          <div className=" min-w-full sm:min-w-[300px] h-[280px] sm:flex px-2 gap-2">
-            <div className="sm:hidden bg-secondary-600 h-10 w-14 absolute flex items-center justify-center">
+          <div
+            key={index}
+            className="relative h-[280px] min-w-full gap-2 px-2 sm:flex sm:min-w-[300px]"
+          >
+            <div className="absolute flex h-10 w-14 items-center justify-center bg-secondary-600 sm:hidden">
               <Typography variant={"h6"} className="text-primary">
                 {" "}
                 0{index + 1}{" "}
               </Typography>
             </div>
-            <div className="hidden sm:flex sm:justify-end sm:items-center sm:flex-col sm: gap-4">
+            <div className="sm: hidden gap-4 sm:flex sm:flex-col sm:items-center sm:justify-end">
               <Typography
-                className="text-white line-clamp-1 font-semibold sm:rotate-180"
+                className="line-clamp-1 font-semibold text-white sm:rotate-180"
                 style={{
                   textOrientation: "sideways",
                   writingMode: "vertical-rl",
@@ -81,7 +77,7 @@ export default function CustomSlider({
           </div>
         ))}
       </div>
-      <div className="sm:right-0 hidden sm:flex sm:flex-col sm:gap-2">
+      <div className="hidden sm:right-0 sm:flex sm:flex-col sm:gap-2">
         <IconButton
           intent={"primary"}
           icon={"material-symbols:keyboard-arrow-right"}

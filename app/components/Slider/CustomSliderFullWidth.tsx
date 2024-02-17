@@ -48,11 +48,11 @@ export default function CustomSliderFullWidth({
     <div className="relative">
       <div
         ref={containerRef}
-        className="min-h-[450px] flex overflow-x-hidden scroll-smooth"
+        className="flex min-h-[450px] overflow-x-hidden scroll-smooth"
       >
-        {items.map((each) => (
-          <div className="min-w-[100%] relative px-2">
-            <div className="absolute top-1/3 mx-6 z-10">
+        {items.map((each, index) => (
+          <div key={index} className="relative min-w-[100%] px-2">
+            <div className="absolute top-1/3 z-10 mx-6">
               <Typography variant={"caption"} className="my-4 text-primary">
                 {" "}
                 #10 Ranking{" "}
@@ -61,8 +61,14 @@ export default function CustomSliderFullWidth({
                 {" "}
                 {each.title}{" "}
               </Typography>
-              <Typography variant={"body2"} className="hidden sm:box my-3 text-white max-w-md line-clamp-3">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque suscipit quod dolorem, tenetur excepturi labore accusantium pariatur deserunt, non rerum ut repellendus id fuga laborum repellat, maiores eaque incidunt fugiat?
+              <Typography
+                variant={"body2"}
+                className="sm:box my-3 line-clamp-3 hidden max-w-md text-white"
+              >
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Doloremque suscipit quod dolorem, tenetur excepturi labore
+                accusantium pariatur deserunt, non rerum ut repellendus id fuga
+                laborum repellat, maiores eaque incidunt fugiat?
               </Typography>
 
               <div className="flex gap-4">
@@ -87,16 +93,14 @@ export default function CustomSliderFullWidth({
               width={800}
               height={600}
               alt={each.title}
-              className="h-full max-h-[600px] object-cover ml-auto"
+              className="ml-auto h-full max-h-[600px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div>
             {/* <div className="absolute inset-0 bg-gradient-to-t from-transparent to-secondary"></div> */}
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary to-transparent h-16"></div>
-            <div className="absolute bottom-0 bg-gradient-to-t from-secondary to-transparent h-16 w-full"></div>
+            <div className="absolute inset-0 h-16 bg-gradient-to-b from-secondary to-transparent"></div>
+            <div className="absolute bottom-0 h-16 w-full bg-gradient-to-t from-secondary to-transparent"></div>
 
             {/* <div className="absolute inset-0 bg-gradient-to-b bottom-0 from-secondary to-transparent h-10"></div> */}
-
-
           </div>
         ))}
 
