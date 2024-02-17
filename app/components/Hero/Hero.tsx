@@ -1,5 +1,5 @@
 import React from "react";
-import CustomSlider from "../Slider/CustomSlider";
+import CustomSliderFullWidth from "../Slider/CustomSliderFullWidth";
 
 const sliderItems = [
   {
@@ -25,7 +25,7 @@ export default function Hero() {
 
   return (
     <div className="sm:container">
-        <CustomSlider items={sliderItems}/>
+        <CustomSliderFullWidth items={sliderItems}/>
       {/* <div className="relative inline-block" >
           <Image src={image} width={600} height={500} alt="image" />
           <div className="absolute inset-0">

@@ -14,13 +14,13 @@ export default function CustomSlider({
   const [sliderIndex, setSliderIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     handleNext();
-  //   }, 3000);
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       handleNext();
+  //     }, 3000);
 
-  //   return () => clearInterval(interval);
-  // }, [sliderIndex, items]);
+  //     return () => clearInterval(interval);
+  //   }, [sliderIndex, items]);
 
   function handleNext() {
     if (containerRef.current) {
@@ -45,73 +45,58 @@ export default function CustomSlider({
   }
 
   return (
-    <div className="relative">
-      <div
-        ref={containerRef}
-        className="min-h-[500px] flex overflow-x-hidden scroll-smooth"
-      >
-        {items.map((each) => (
-          <div className="min-w-[100%] relative px-2">
-            <div className="absolute top-1/3 mx-6 z-10">
-              <Typography variant={"caption"} className="my-4 text-primary">
+    <div className="relative flex flex-row">
+      <div ref={containerRef} className="flex overflow-x-hidden scroll-smooth ">
+        {items.map((each, index) => (
+          <div className=" min-w-full sm:min-w-[300px] h-[280px] sm:flex px-2 gap-2">
+            <div className="sm:hidden bg-secondary-600 h-10 w-14 absolute flex items-center justify-center">
+              <Typography variant={"h6"} className="text-primary">
                 {" "}
-                #10 Ranking{" "}
+                0{index + 1}{" "}
               </Typography>
-              <Typography variant={"h4"} className="my-3 text-white">
+            </div>
+            <div className="hidden sm:flex sm:justify-end sm:items-center sm:flex-col sm: gap-4">
+              <Typography
+                className="text-white line-clamp-1 font-semibold sm:rotate-180"
+                style={{
+                  textOrientation: "sideways",
+                  writingMode: "vertical-rl",
+                }}
+              >
                 {" "}
                 {each.title}{" "}
               </Typography>
-              <Typography variant={"body2"} className="hidden sm:box my-3 text-white max-w-md line-clamp-3">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque suscipit quod dolorem, tenetur excepturi labore accusantium pariatur deserunt, non rerum ut repellendus id fuga laborum repellat, maiores eaque incidunt fugiat?
+              <Typography variant={"h6"} className="text-primary">
+                {" "}
+                0{index + 1}{" "}
               </Typography>
-
-              <div className="flex gap-4">
-                <IconButton
-                  intent={"primary"}
-                  text="Watch Now"
-                  icon={"material-symbols:play-circle-rounded"}
-                  iconPlacement={"left"}
-                  additionalClassNames="rounded-xl text-secondary-600 text-sm"
-                />
-                <IconButton
-                  intent={"primary"}
-                  text="Details"
-                  icon={"iconamoon:arrow-right-2-duotone"}
-                  iconPlacement={"right"}
-                  additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
-                />
-              </div>
             </div>
             <Image
               src={each.image}
-              width={800}
-              height={600}
+              width={300}
+              height={200}
               alt={each.title}
-              className="h-full max-h-[600px] object-cover ml-auto"
+              className="w-full sm:w-[80%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div>
-            {/* <div className="absolute inset-0 bg-gradient-to-t from-transparent to-secondary"></div> */}
-            <div className="absolute inset-0 bg-gradient-to-b from-secondary to-transparent h-16"></div>
-            <div className="absolute bottom-0 bg-gradient-to-t from-secondary to-transparent h-16 w-full"></div>
-
-            {/* <div className="absolute inset-0 bg-gradient-to-b bottom-0 from-secondary to-transparent h-10"></div> */}
-
-
           </div>
         ))}
-
-        <Button
+      </div>
+      <div className="sm:right-0 hidden sm:flex sm:flex-col sm:gap-2">
+        <IconButton
           intent={"primary"}
-          className="absolute right-0"
+          icon={"material-symbols:keyboard-arrow-right"}
           onClick={() => handleNext()}
-        >
-          {" "}
-          Next{" "}
-        </Button>
-        <Button className="absolute" onClick={() => handlePrev()}>
-          {" "}
-          Prev{" "}
-        </Button>
+          iconPlacement="left"
+          additionalClassNames="flex-1 bg-slate-200/50 px-2"
+        />
+        <IconButton
+          intent={"primary"}
+          className=""
+          icon={"material-symbols:keyboard-arrow-left"}
+          onClick={() => handlePrev()}
+          iconPlacement="left"
+          additionalClassNames="flex-1 bg-slate-200/50 px-2"
+        />
       </div>
     </div>
   );
