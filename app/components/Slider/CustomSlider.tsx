@@ -43,7 +43,7 @@ export default function CustomSlider({
         {items.map((each, index) => (
           <div
             key={index}
-            className="relative h-[280px] min-w-full gap-2 px-2 sm:flex sm:min-w-[300px]"
+            className="relative h-[280px] min-w-full gap-2 px-2 sm:flex sm:min-w-[300px] overflow-hidden"
           >
             <div className="absolute flex h-10 w-14 items-center justify-center bg-secondary-600 sm:hidden">
               <Typography variant={"h6"} className="text-primary">
@@ -51,7 +51,7 @@ export default function CustomSlider({
                 0{index + 1}{" "}
               </Typography>
             </div>
-            <div className="sm: hidden gap-4 sm:flex sm:flex-col sm:items-center sm:justify-end">
+            <div className="hidden gap-4 sm:flex sm:flex-col sm:items-center sm:justify-end">
               <Typography
                 className="line-clamp-1 font-semibold text-white sm:rotate-180"
                 style={{

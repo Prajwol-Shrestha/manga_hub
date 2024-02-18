@@ -16,7 +16,14 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .display-box {
+    display: -webkit-box;
+  }
+  .grid-columns{
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
+
 
 .hero {
   background: url("../public/assets/estate.png") no-repeat;

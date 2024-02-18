@@ -23,7 +23,7 @@ const sliderItems = [
 
 export default function Trending() {
   return (
-    <section className="container my-5">
+    <section className="container py-12">
       <Typography variant={"h5"} className="text-primary">
         {" "}
         Trending{" "}

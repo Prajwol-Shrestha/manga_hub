@@ -63,7 +63,7 @@ export default function CustomSliderFullWidth({
               </Typography>
               <Typography
                 variant={"body2"}
-                className="sm:box my-3 line-clamp-3 hidden max-w-md text-white"
+                className="sm:display-box my-3 line-clamp-3 hidden max-w-md text-white"
               >
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Doloremque suscipit quod dolorem, tenetur excepturi labore
