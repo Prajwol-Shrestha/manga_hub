@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import Trending from "./components/Trending/Trending";
 import Featured from "./components/Featured/Featured";
+import TopSection from "./components/TopSection/TopSection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Trending />
       <Featured />
+      <TopSection />
       <Footer />
     </main>
   );
