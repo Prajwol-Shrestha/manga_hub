@@ -8,12 +8,10 @@ import TopSection from "./components/TopSection/TopSection";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
       <Hero />
       <Trending />
       <Featured />
       <TopSection />
-      <Footer />
     </main>
   );
 }
