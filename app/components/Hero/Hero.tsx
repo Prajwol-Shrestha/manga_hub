@@ -1,29 +1,14 @@
 import React from "react";
 import CustomSliderFullWidth from "../Slider/CustomSliderFullWidth";
+import fetcher from "@/app/apis/fetcher";
+import endpoints from "@/app/apis/mangas/endpoints";
 
-const sliderItems = [
-  {
-    title: "Konosuba",
-    image: "/assets/estate.png",
-  },
-  {
-    title: "The Greatest Estate Developer",
-    image: "/assets/estate.png",
-  },
-  {
-    title: "Slide three",
-    image: "/assets/estate.png",
-  },
-  {
-    title: "Slide four",
-    image: "/assets/estate.png",
-  },
-];
 
-export default function Hero() {
+export default async function Hero() {
+  const data = await fetcher("kitsu",endpoints.mangaList, {"page[limit]": '10', "sort": "popularityRank"})
   return (
     <div className="sm:container">
-      <CustomSliderFullWidth items={sliderItems} />
+      <CustomSliderFullWidth  items={data.data} />
       {/* <div className="relative inline-block" >
           <Image src={image} width={600} height={500} alt="image" />
           <div className="absolute inset-0">
