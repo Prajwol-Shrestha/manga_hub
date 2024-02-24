@@ -4,11 +4,12 @@ import React, { useEffect, useRef, useState } from "react";
 import IconButton from "../Buttons/IconButton";
 import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 import SingleSlider from "./SingleSlider";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
 export default function CustomSlider({
   items,
 }: {
-  items: Manga[];
+  items: JikanManga[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 

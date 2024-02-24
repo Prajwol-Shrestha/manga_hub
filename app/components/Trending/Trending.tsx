@@ -4,9 +4,13 @@ import CustomSlider from "../Slider/CustomSlider";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 
-
 export default async function Trending() {
-  const data = await fetcher("kitsu",endpoints.trendingMangas)
+  // action, adventure, comedy,fantasy,
+  const data = await fetcher(endpoints.mangaList, {
+    orderBy: "rank",
+    limit: "10",
+    genres: "1,2,4,10",
+  });
   return (
     <section className="container py-12">
       <Typography variant={"h5"} className="text-primary">

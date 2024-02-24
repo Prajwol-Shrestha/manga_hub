@@ -39,7 +39,7 @@ export default function Top10Section() {
       //   const datas = [...mangas.data, ...manhwas.data, ...manhuas.data]
       let query = constructQueryBasedOnTimeFrame();
 
-      const data = await fetcher("jikan", endpoints.topManga, query);
+      const data = await fetcher(endpoints.topManga, query);
       console.log(data)
       const datas = data.data;
       setTopMangas(datas);

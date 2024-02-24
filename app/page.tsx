@@ -8,7 +8,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col">
       <Hero />
       <Trending />
-      <Featured />
+      {/* <Featured /> */}
       <TopSection />
     </main>
   );

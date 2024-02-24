@@ -5,7 +5,7 @@ import endpoints from "@/app/apis/mangas/endpoints";
 
 
 export default async function Hero() {
-  const data = await fetcher("kitsu",endpoints.mangaList, {"page[limit]": '10', "sort": "popularityRank"})
+  const data = await fetcher(endpoints.mangaList, {"limit": '10', "orderBy": "popularity"})
   return (
     <div className="sm:container">
       <CustomSliderFullWidth  items={data.data} />

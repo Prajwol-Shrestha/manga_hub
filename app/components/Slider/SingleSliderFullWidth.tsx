@@ -3,28 +3,29 @@ import IconButton from "../Buttons/IconButton";
 import Typography from "../Typography/Typography";
 import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 import Image from "next/image";
+import Link from "next/link";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
-export default function SingleSliderFullWidth({ item }: { item: Manga }) {
-  const { attributes } = item ?? {};
-  const { popularityRank, titles, posterImage, description, canonicalTitle } =
-    attributes ?? {}
+export default function SingleSliderFullWidth({ item }: { item: JikanManga }) {
+  const { images, mal_id, title, rank, synopsis } = item ?? {};
+
 
   return (
     <div className="relative min-w-[100%] px-2">
       <div className="absolute top-1/3 z-10 mx-6">
         <Typography variant={"caption"} className="my-4 text-primary">
           {" "}
-          #{popularityRank} Ranking{" "}
+          #{rank + 1} Ranking{" "}
         </Typography>
         <Typography variant={"h4"} className="my-3 text-white">
           {" "}
-          {titles?.en_jp ?? titles?.en_us ?? titles?.zh_cn}{" "}
+          {title}{" "}
         </Typography>
         <Typography
           variant={"body2"}
           className="sm:display-box my-3 line-clamp-3 hidden max-w-md text-white"
         >
-          {description}
+          {synopsis}
         </Typography>
 
         <div className="flex gap-4">
@@ -35,20 +36,22 @@ export default function SingleSliderFullWidth({ item }: { item: Manga }) {
             iconPlacement={"left"}
             additionalClassNames="rounded-xl text-secondary-600 text-sm"
           />
-          <IconButton
-            intent={"primary"}
-            text="Details"
-            icon={"iconamoon:arrow-right-2-duotone"}
-            iconPlacement={"right"}
-            additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
-          />
+          <Link href={`/details/${mal_id}`}>
+            <IconButton
+              intent={"primary"}
+              text="Details"
+              icon={"iconamoon:arrow-right-2-duotone"}
+              iconPlacement={"right"}
+              additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
+            />
+          </Link>
         </div>
       </div>
       <Image
-        src={posterImage.original}
+        src={images.webp.image_url}
         width={800}
         height={600}
-        alt={canonicalTitle}
+        alt={title}
         className="ml-auto h-full max-h-[600px] w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div>

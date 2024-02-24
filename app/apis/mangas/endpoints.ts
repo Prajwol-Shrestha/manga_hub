@@ -3,7 +3,8 @@ const endpoints = {
     trendingMangas: '/trending/manga',
     recommendedMangas: '',
     topManga: '/top/manga',
-    mangaGenres: '/genres/manga'
+    mangaGenres: '/genres/manga',
+    manga: '/manga'
 }
 
 export default endpoints

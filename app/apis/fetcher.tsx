@@ -2,9 +2,9 @@ type QueryParams = {
     [key: string]: string;
 }
 
-export default async function fetcher(site="kitsu",endpoint: string, queryParams: QueryParams = {}) {
+export default async function fetcher(endpoint: string, queryParams: QueryParams = {}) {
     // can't access env variables from client side
-    const baseURL = site === "kitsu" ? (process.env.BASE_KITSU_URL || 'https://kitsu.io/api/edge' ) : (process.env.BASE_JIKAN_URL || 'https://api.jikan.moe/v4');
+    const baseURL = (process.env.BASE_JIKAN_URL || 'https://api.jikan.moe/v4');
     const url = new URL(`${baseURL}${endpoint}`);
 
     
@@ -14,7 +14,7 @@ export default async function fetcher(site="kitsu",endpoint: string, queryParams
     });
 
     try {
-        const response = await fetch(url.toString(), { next: { revalidate: 3600 } });
+        const response = await fetch(url.toString(), { next: { revalidate: 14400 } });
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.statusText}`);
         }

@@ -7,10 +7,11 @@ import FeaturedCard from "./FeaturedCard";
 import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 
 async function UpcomingSection() {
-  const data = await fetcher("kitsu",endpoints.mangaList, {
-    "filter[status]": "upcoming",
-    "filter[categories]": "fantasy",
-    "page[limit]": "4",
+  const data = await fetcher(endpoints.mangaList, {
+    status: "upcoming",
+    sfw: "true",
+    order_by: "score",
+    limit: "4",
   });
   const datas = data.data as Manga[];
   return (
@@ -38,10 +39,11 @@ async function UpcomingSection() {
 }
 
 async function OngoingSection() {
-  const data = await fetcher("kitsu",endpoints.mangaList, {
-    "filter[status]": "current",
-    "filter[categories]": "isekai",
-    "page[limit]": "4",
+  const data = await fetcher(endpoints.mangaList, {
+    status: "publishing",
+    sfw: "true",
+    order_by: "score",
+    limit: "4",
   });
   const datas = data.data as Manga[];
   return (
@@ -69,10 +71,11 @@ async function OngoingSection() {
 }
 
 async function CompletedSection() {
-  const data = await fetcher("kitsu",endpoints.mangaList, {
-    "filter[status]": "finished",
-    "filter[categories]": "fantasy",
-    "page[limit]": "4",
+  const data = await fetcher(endpoints.mangaList, {
+    status: "complete",
+    sfw: "true",
+    order_by: "score",
+    limit: "4",
   });
   const datas = data.data as Manga[];
   return (
@@ -99,17 +102,18 @@ async function CompletedSection() {
   );
 }
 async function ToBeAnnouncedSection() {
-  const data = await fetcher("kitsu",endpoints.mangaList, {
-    "filter[status]": "tba",
-    "filter[categories]": "isekai",
-    "page[limit]": "4",
+  const data = await fetcher(endpoints.mangaList, {
+    status: "discontinued",
+    sfw: "true",
+    order_by: "score",
+    limit: "4",
   });
   const datas = data.data as Manga[];
   return (
     <div>
       <Typography variant={"h6"} className="text-primary">
         {" "}
-        To Be Announced
+        Discontinued
       </Typography>
       <div className="mt-4 flex flex-col gap-4">
         {datas.map((item, index) => (
@@ -130,7 +134,6 @@ async function ToBeAnnouncedSection() {
 }
 
 export default function Featured() {
-  
   return (
     <section className="container py-12">
       <div className="grid-columns grid justify-between gap-x-8 gap-y-12">

@@ -1,4 +1,5 @@
-import Button from "@/app/components/Buttons/Button";
+import fetcher from "@/app/apis/fetcher";
+import endpoints from "@/app/apis/mangas/endpoints";
 import IconButton from "@/app/components/Buttons/IconButton";
 import TopSection from "@/app/components/TopSection/TopSection";
 import Typography from "@/app/components/Typography/Typography";
@@ -6,12 +7,17 @@ import Image from "next/image";
 import React from "react";
 const image = "/assets/estate.png";
 
-export default function page({ params }: { params: { slug: number } }) {
+export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = params;
+  const customSlugArray = slug.split("-");
+  const endpoint = endpoints.manga.concat(`/${customSlugArray[1]}`);
+  const data = await fetcher(endpoint);
+  console.log(data.data);
+
   return (
     <main>
       <section className="hero !bg-cover !bg-center">
-        <div className="backdrop-blur-xl bg-slate-900/40 py-12">
+        <div className="bg-slate-900/40 py-12 backdrop-blur-xl">
           <div className="container flex gap-4 ">
             <div className=" basis-1/3">
               <Image src={image} width={600} height={500} alt="image" />
@@ -47,18 +53,17 @@ export default function page({ params }: { params: { slug: number } }) {
                 Repellendus praesentium, dolorem laboriosam illo sit vero
                 accusamus perferendis autem expedita adipisci similique et
                 assumenda. Debitis nesciunt quis, molestiae aut fuga veritatis
-                voluptate assumenda deserunt sunt pariatur, est ex repellat dicta
-                repudiandae? Laudantium ullam et corrupti amet quis mollitia, quae
-                consequuntur facilis pariatur eius velit inventore non excepturi
-                vero voluptates ipsam? Quam.{" "}
+                voluptate assumenda deserunt sunt pariatur, est ex repellat
+                dicta repudiandae? Laudantium ullam et corrupti amet quis
+                mollitia, quae consequuntur facilis pariatur eius velit
+                inventore non excepturi vero voluptates ipsam? Quam.{" "}
               </Typography>
             </div>
           </div>
         </div>
       </section>
       <section>
-      <TopSection />
-        
+        <TopSection />
       </section>
     </main>
   );

@@ -12,7 +12,7 @@ export default async function TopSectionCards({
   type: string;
   title: string;
 }) {
-  const data = await fetcher("jikan", endpoints.topManga, {
+  const data = await fetcher(endpoints.topManga, {
     "type": type,
     "limit": "8",
     "filter": "bypopularity",

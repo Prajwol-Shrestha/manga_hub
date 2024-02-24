@@ -4,13 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "../Buttons/Button";
 import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 import SingleSliderFullWidth from "./SingleSliderFullWidth";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
 
 
 export default function CustomSliderFullWidth({
   items,
 }: {
-  items: Manga[];
+  items: JikanManga[];
 }) {
   const [sliderIndex, setSliderIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);

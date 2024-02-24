@@ -12,7 +12,7 @@ export default function GenreSection() {
   const [showMore, setShowMore] = useState(false)
 
   const fetchData = async () => {
-    const data = await fetcher("jikan", endpoints.mangaGenres);
+    const data = await fetcher(endpoints.mangaGenres);
     const datas = data.data as MangaGenres[];
     setGenres(datas);
   };
