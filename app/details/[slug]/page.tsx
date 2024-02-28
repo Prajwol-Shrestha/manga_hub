@@ -1,31 +1,50 @@
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import IconButton from "@/app/components/Buttons/IconButton";
+import RecommendedMangas from "@/app/components/Recommended/RecommendedMangas";
+import GenreSection from "@/app/components/TopSection/GenreSection";
+import RecentMangas from "@/app/components/TopSection/RecentMangas";
+import Top10Section from "@/app/components/TopSection/Top10Section";
 import TopSection from "@/app/components/TopSection/TopSection";
 import Typography from "@/app/components/Typography/Typography";
+import TwoThirdsOneThirdLayout from "@/app/components/layouts/TwoThirdsOneThirdLayout";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Image from "next/image";
 import React from "react";
-const image = "/assets/estate.png";
+
+function SecondaryChild() {
+  return (
+    <>
+      <GenreSection />
+      <Top10Section />
+    </>
+  );
+}
 
 export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const customSlugArray = slug.split("-");
-  const endpoint = endpoints.manga.concat(`/${customSlugArray[1]}`);
+  const endpoint = endpoints.manga.concat(`/${slug}`);
   const data = await fetcher(endpoint);
-  console.log(data.data);
+  const mangaInfo = data.data as JikanManga;
+  const { images, title, synopsis } = mangaInfo ?? {};
 
   return (
     <main>
-      <section className="hero !bg-cover !bg-center">
+      <section className="hero relative !bg-cover !bg-center">
         <div className="bg-slate-900/40 py-12 backdrop-blur-xl">
-          <div className="container flex gap-4 ">
-            <div className=" basis-1/3">
-              <Image src={image} width={600} height={500} alt="image" />
+          <div className="container flex flex-col gap-4 sm:flex-row">
+            <div className="h-[20vh] sm:h-[40vh] sm:basis-1/3">
+              <Image
+                src={images.webp.image_url}
+                width={600}
+                height={400}
+                alt={title}
+                className="h-full object-contain"
+              />
             </div>
-            <div className="flex basis-1/2 flex-col gap-3">
+            <div className="flex flex-col gap-3 sm:basis-1/2">
               <Typography variant={"h3"} className="text-white">
-                {" "}
-                The Greatest Estate Developer{" "}
+                {title}
               </Typography>
               <div></div>
               <div className="flex gap-4">
@@ -46,25 +65,22 @@ export default async function page({ params }: { params: { slug: string } }) {
               </div>
               <Typography
                 variant={"body1"}
-                className="line-clamp-3 max-w-[80%] text-white/90"
+                className="mt-8 line-clamp-3 max-w-[80%] text-white/90"
               >
-                {" "}
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repellendus praesentium, dolorem laboriosam illo sit vero
-                accusamus perferendis autem expedita adipisci similique et
-                assumenda. Debitis nesciunt quis, molestiae aut fuga veritatis
-                voluptate assumenda deserunt sunt pariatur, est ex repellat
-                dicta repudiandae? Laudantium ullam et corrupti amet quis
-                mollitia, quae consequuntur facilis pariatur eius velit
-                inventore non excepturi vero voluptates ipsam? Quam.{" "}
+                {synopsis}
               </Typography>
             </div>
           </div>
         </div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div> */}
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-transparent to-secondary"></div> */}
+        {/* <div className="absolute inset-0 h-16 bg-gradient-to-b from-secondary to-transparent"></div> */}
+        <div className="absolute bottom-0 h-16 w-full bg-gradient-to-t from-secondary to-transparent"></div>
       </section>
-      <section>
-        <TopSection />
-      </section>
+      <TwoThirdsOneThirdLayout
+        primaryChild={<RecommendedMangas id={slug}/>}
+        secondaryChild={<SecondaryChild />}
+      />
     </main>
   );
 }

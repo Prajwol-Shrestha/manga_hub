@@ -1,13 +1,13 @@
 interface ImageVariant {
-    image_url: string;
-    small_image_url: string;
-    large_image_url: string;
-  }
-  
-  interface Image {
-    jpg: ImageVariant;
-    webp: ImageVariant;
-  }
+  image_url: string;
+  small_image_url: string;
+  large_image_url: string;
+}
+
+interface Image {
+  jpg: ImageVariant;
+  webp: ImageVariant;
+}
 
 interface Title {
   type: string;
@@ -82,12 +82,16 @@ export interface JikanManga {
   demographics: Demographic[];
 }
 
-
-
 // getting all genre types from jikan
-export interface MangaGenres{
-    mal_id: number;
-    name: string;
-    url: string;
-    count: number;
+export interface MangaGenres {
+  mal_id: number;
+  name: string;
+  url: string;
+  count: number;
+}
+
+export interface RecommendedMangaType {
+  entry: JikanManga;
+  Url: string;
+  votes: number;
 }
