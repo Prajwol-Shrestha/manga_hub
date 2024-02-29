@@ -35,7 +35,7 @@ export default function ReviewCard({ review }: { review: Review }) {
           </Typography>
           <Typography variant={"caption"}> Posted on: {date}</Typography>
         </div>
-        <div className="my-4 flex gap-2">
+        <div className="my-4 flex gap-2 flex-wrap">
           {tags.map((tag, index) => (
             <Button
               intent={"chip"}
@@ -55,14 +55,14 @@ export default function ReviewCard({ review }: { review: Review }) {
           {" "}
           {mangaReview}{" "}
         </Typography>
-        <div className="flex mt-4 gap-2">
-          <Link href={`/details/${entry.mal_id}`}>
+        <div className="flex mt-4 gap-2 flex-col sm:flex-row">
+          <Link href={`/details/${entry.mal_id}`} className="sm:w-1/2">
             <IconButton
               intent={"primary"}
               text="Details"
               icon={"iconamoon:arrow-right-2-light"}
               iconPlacement={"right"}
-              additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
+              additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200 w-full"
             />
           </Link>
           <IconButton
@@ -70,7 +70,7 @@ export default function ReviewCard({ review }: { review: Review }) {
             intent={"secondary"}
             iconPlacement="right"
             icon={"ic:baseline-plus"}
-            additionalClassNames="rounded-xl text-white text-sm bg-secondary hover:text-secondary"
+            additionalClassNames="rounded-xl text-white text-sm bg-secondary hover:text-secondary w-full sm:max-w-[300px]"
           />
         </div>
       </div>
