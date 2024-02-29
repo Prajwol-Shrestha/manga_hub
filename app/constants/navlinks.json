@@ -5,26 +5,18 @@
   },
   {
     "title": "Most Popular",
-    "link": "/popular"
+    "link": "/search/mostpopular"
   },
   {
-    "title": "Movies",
-    "link": "/movies"
+    "title": "Recommendations",
+    "link": "/recommendations"
   },
   {
-    "title": "TV Series",
-    "link": "/series"
+    "title": "Random",
+    "link": "/random"
   },
   {
-    "title": "OVAs",
-    "link": "/ovas"
-  },
-  {
-    "title": "ONAs",
-    "link": "/onas"
-  },
-  {
-    "title": "Specials",
-    "link": "/specials"
+    "title": "Reviews",
+    "link": "/reviews"
   }
 ]

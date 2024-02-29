@@ -16,15 +16,13 @@ function SecondaryChildren() {
   );
 }
 
-export default async function page(params) {
-  const { searchParams } = params ?? {};
-  const { id, name } = searchParams;
+export default async function page() {
   const endpoint = endpoints.mangaList;
-  const data = await fetcher(endpoint, { genres: `${id}` });
+  const data = await fetcher(endpoint, { "orderBy": "popularity" });
   const datas = data.data as JikanManga[];
   return (
     <TwoThirdsOneThirdLayout
-      primaryChild={<GenreSearchSection title={name} datas={datas} />}
+      primaryChild={<GenreSearchSection title={'Most Popular'} datas={datas} />}
       secondaryChild={<SecondaryChildren />}
     />
   );

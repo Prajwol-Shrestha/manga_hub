@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../Buttons/Button";
-import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 import SingleSliderFullWidth from "./SingleSliderFullWidth";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 

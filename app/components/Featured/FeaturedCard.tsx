@@ -1,5 +1,4 @@
 "use client";
-import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 import Image from "next/image";
 import React from "react";
 import Typography from "../Typography/Typography";

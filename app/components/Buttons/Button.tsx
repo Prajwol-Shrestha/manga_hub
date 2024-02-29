@@ -29,8 +29,16 @@ const button = cva("button", {
         "tracking-wider",
         "cursor-pointer",
       ],
+      chip: [
+        "text-white",
+        "tracking-wider",
+        "rounded-lg",
+        "border-1",
+        "font-semibold"
+      ]
     },
     size: {
+      extraSmall: ["py-1", "px-2", "text-xs"],
       small: ["text-sm", "py-2", "px-4"],
       medium: ["text-base", "py-2", "px-4"],
     },

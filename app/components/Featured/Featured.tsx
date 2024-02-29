@@ -4,7 +4,6 @@ import Divider from "../Divider/Divider";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import FeaturedCard from "./FeaturedCard";
-import { Manga } from "@/app/types/Manga/Kitsu/Manga";
 
 async function UpcomingSection() {
   const data = await fetcher(endpoints.mangaList, {
