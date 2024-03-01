@@ -117,6 +117,10 @@ export interface Review {
   is_spoiler: boolean;
   is_preliminary: boolean;
   chapters_read: number | null;
+  entry: Entry;
+}
+
+export interface Entry {
   entry: {
     mal_id: number;
     url: string;
@@ -145,5 +149,16 @@ export interface Review {
         image_url: string;
       };
     };
+  };
+}
+
+export interface MangaRecommendedByUser {
+  content: string;
+  date: string;
+  mal_id: string;
+  entry: Entry;
+  user: {
+    url: string;
+    username: string;
   };
 }
