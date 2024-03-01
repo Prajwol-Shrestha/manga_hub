@@ -2,13 +2,29 @@
 import React, { useState } from "react";
 import navlinks from "@/app/constants/navlinks.json";
 import Link from "next/link";
+import InputWithIcon from "../InputWithIcon/InputWithIcon";
+import Typography from "../Typography/Typography";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [searchValue, setSearchValue] = useState('')
+  const router = useRouter()
+
+  function handleSearch(e: React.FormEvent<HTMLFormElement>){
+    e.preventDefault()
+    if(!searchValue){
+      return
+    }
+    router.push(`/search?query=${searchValue}`)
+  }
   return (
     <nav className="bg-secondary-600 text-white">
       <div className="container flex items-center justify-between px-2 py-4">
-        <p> Logo </p>
+        <Typography variant={'h6'} className="text-primary"> Manga </Typography>
+        <form onSubmit={handleSearch}>
+          <InputWithIcon type="text" icon="icons8:search" placeholder="Search..." value={searchValue} setSearchValue={setSearchValue} handleSearch={handleSearch}/>
+        </form>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
           className={`z-30 flex sm:hidden ${showNavbar ? "opened" : ""}`}

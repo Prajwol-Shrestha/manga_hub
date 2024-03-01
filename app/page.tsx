@@ -1,7 +1,5 @@
 import Hero from "./components/Hero/Hero";
 import Trending from "./components/Trending/Trending";
-import Featured from "./components/Featured/Featured";
-import TopSection from "./components/TopSection/TopSection";
 import RecentMangas from "./components/RecentMangas/RecentMangas";
 
 export default function Home() {
