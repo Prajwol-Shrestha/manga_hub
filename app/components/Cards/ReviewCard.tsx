@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Typography from "../components/Typography/Typography";
-import Button from "../components/Buttons/Button";
-import { Review } from "../types/Manga/Jikan/JikanMangaTypes";
-import tagColor from "../utils/tagColor";
-import IconButton from "../components/Buttons/IconButton";
+import Typography from "../Typography/Typography";
+import Button from "../Buttons/Button";
+import { Review } from "../../types/Manga/Jikan/JikanMangaTypes";
+import tagColor from "../../utils/tagColor";
+import IconButton from "../Buttons/IconButton";
 
 export default function ReviewCard({ review }: { review: Review }) {
   const { entry, mal_id, user, date, tags, review: mangaReview } = review ?? {};

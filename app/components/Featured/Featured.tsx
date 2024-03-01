@@ -3,7 +3,8 @@ import Typography from "../Typography/Typography";
 import Divider from "../Divider/Divider";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
-import FeaturedCard from "./FeaturedCard";
+import FeaturedCard from "../Cards/FeaturedCard";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
 async function UpcomingSection() {
   const data = await fetcher(endpoints.mangaList, {
@@ -12,7 +13,7 @@ async function UpcomingSection() {
     order_by: "score",
     limit: "4",
   });
-  const datas = data.data as Manga[];
+  const datas = data.data as JikanManga[];
   return (
     <div>
       <Typography variant={"h6"} className="text-primary">
@@ -44,7 +45,7 @@ async function OngoingSection() {
     order_by: "score",
     limit: "4",
   });
-  const datas = data.data as Manga[];
+  const datas = data.data as JikanManga[];
   return (
     <div>
       <Typography variant={"h6"} className="text-primary">
@@ -76,7 +77,7 @@ async function CompletedSection() {
     order_by: "score",
     limit: "4",
   });
-  const datas = data.data as Manga[];
+  const datas = data.data as JikanManga[];
   return (
     <div>
       <Typography variant={"h6"} className="text-primary">
@@ -107,7 +108,7 @@ async function ToBeAnnouncedSection() {
     order_by: "score",
     limit: "4",
   });
-  const datas = data.data as Manga[];
+  const datas = data.data as JikanManga[];
   return (
     <div>
       <Typography variant={"h6"} className="text-primary">

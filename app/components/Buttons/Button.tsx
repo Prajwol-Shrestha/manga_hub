@@ -7,7 +7,7 @@ const button = cva("button", {
     intent: {
       primary: [
         "bg-primary",
-        "text-white",
+        "text-secondary",
         "rounded-sm",
         "capitalize",
         "hover:bg-primary-500",
@@ -28,6 +28,8 @@ const button = cva("button", {
         "cursor-pointer",
         "tracking-wider",
         "cursor-pointer",
+        "border",
+        "border-primary"
       ],
       chip: [
         "text-white",

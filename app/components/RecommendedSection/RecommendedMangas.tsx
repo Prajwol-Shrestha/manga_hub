@@ -3,7 +3,6 @@ import Typography from "../Typography/Typography";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import {
-  JikanManga,
   RecommendedMangaType,
 } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Card from "../Cards/Card";
@@ -14,7 +13,7 @@ export default async function RecommendedMangas({ id }: { id: string }) {
   const datas = (data.data.slice(0, 21) as RecommendedMangaType[]) || [];
 
   return (
-    <section className="container">
+    <section>
       <Typography variant={"h5"} className="text-primary">
         {" "}
         Recommended Mangas{" "}

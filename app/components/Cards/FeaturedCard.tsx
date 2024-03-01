@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React from "react";
 import Typography from "../Typography/Typography";
-import { Icon } from "@iconify/react";
 import PGRatingCard from "../PGRatingCard/PGRatingCard";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 

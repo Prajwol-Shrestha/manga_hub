@@ -1,16 +1,17 @@
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import IconButton from "@/app/components/Buttons/IconButton";
-import RecommendedMangas from "@/app/components/Recommended/RecommendedMangas";
-import GenreSection from "@/app/components/TopSection/GenreSection";
-import RecentMangas from "@/app/components/TopSection/RecentMangas";
-import Top10Section from "@/app/components/TopSection/Top10Section";
+import RecommendedMangas from "@/app/components/RecommendedSection/RecommendedMangas";
+import GenreSection from "@/app/components/GenreSection/GenreSection";
+import RecentMangas from "@/app/components/RecentMangas/RecentMangas";
+import Top10Section from "@/app/components/Top10Section/Top10Section";
 import TopSection from "@/app/components/TopSection/TopSection";
 import Typography from "@/app/components/Typography/Typography";
 import TwoThirdsOneThirdLayout from "@/app/components/layouts/TwoThirdsOneThirdLayout";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Image from "next/image";
 import React from "react";
+import Overlay from "../components/Overlay/Overlay";
 
 function SecondaryChild() {
   return (
@@ -70,10 +71,7 @@ export default async function page() {
             </div>
           </div>
         </div>
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div> */}
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-transparent to-secondary"></div> */}
-        {/* <div className="absolute inset-0 h-16 bg-gradient-to-b from-secondary to-transparent"></div> */}
-        <div className="absolute bottom-0 h-16 w-full bg-gradient-to-t from-secondary to-transparent"></div>
+        <Overlay direction="top" />
       </section>
       <TwoThirdsOneThirdLayout
         primaryChild={<RecommendedMangas id={String(mal_id)} />}

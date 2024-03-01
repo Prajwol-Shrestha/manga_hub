@@ -5,7 +5,7 @@ import Typography from "../Typography/Typography";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
-import Top10Card from "./Top10Card";
+import Top10Card from "../Cards/Top10Card";
 import useSWR from "swr";
 
 export default function Top10Section() {

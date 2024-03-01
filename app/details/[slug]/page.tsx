@@ -1,11 +1,9 @@
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import IconButton from "@/app/components/Buttons/IconButton";
-import RecommendedMangas from "@/app/components/Recommended/RecommendedMangas";
-import GenreSection from "@/app/components/TopSection/GenreSection";
-import RecentMangas from "@/app/components/TopSection/RecentMangas";
-import Top10Section from "@/app/components/TopSection/Top10Section";
-import TopSection from "@/app/components/TopSection/TopSection";
+import RecommendedMangas from "@/app/components/RecommendedSection/RecommendedMangas";
+import GenreSection from "@/app/components/GenreSection/GenreSection";
+import Top10Section from "@/app/components/Top10Section/Top10Section";
 import Typography from "@/app/components/Typography/Typography";
 import TwoThirdsOneThirdLayout from "@/app/components/layouts/TwoThirdsOneThirdLayout";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";

@@ -5,7 +5,7 @@ import endpoints from "@/app/apis/mangas/endpoints";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
-import FeaturedCard from "../Featured/FeaturedCard";
+import FeaturedCard from "../Cards/FeaturedCard";
 import Card from "../Cards/Card";
 import Typography from "../Typography/Typography";
 import Loading from "../Loading/Loading";

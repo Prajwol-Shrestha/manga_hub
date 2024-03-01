@@ -1,6 +1,6 @@
 import React from "react";
-import IconButton from "../Buttons/IconButton";
-import Typography from "../Typography/Typography";
+import IconButton from "../../Buttons/IconButton";
+import Typography from "../../Typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";

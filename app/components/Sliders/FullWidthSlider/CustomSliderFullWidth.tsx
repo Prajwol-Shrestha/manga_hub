@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../Buttons/Button";
+import Button from "../../Buttons/Button";
 import SingleSliderFullWidth from "./SingleSliderFullWidth";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 

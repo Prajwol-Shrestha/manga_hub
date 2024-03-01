@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "../Typography/Typography";
-import CustomSlider from "../Slider/CustomSlider";
+import CustomSlider from "../Sliders/MultipleWindowSlider/CustomSlider";
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 

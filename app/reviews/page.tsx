@@ -3,7 +3,7 @@ import Typography from "../components/Typography/Typography";
 import fetcher from "../apis/fetcher";
 import endpoints from "../apis/mangas/endpoints";
 import { Review } from "../types/Manga/Jikan/JikanMangaTypes";
-import ReviewCard from "./ReviewCard";
+import ReviewCard from "../components/Cards/ReviewCard";
 
 export default async function page() {
   const data = await fetcher(endpoints.mangaReviews, {

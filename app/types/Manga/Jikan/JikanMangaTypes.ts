@@ -121,23 +121,21 @@ export interface Review {
 }
 
 export interface Entry {
-  entry: {
-    mal_id: number;
-    url: string;
-    images: {
-      jpg: {
-        image_url: string;
-        small_image_url: string;
-        large_image_url: string;
-      };
-      webp: {
-        image_url: string;
-        small_image_url: string;
-        large_image_url: string;
-      };
+  mal_id: number;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
     };
-    title: string;
+    webp: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
   };
+  title: string;
   user: {
     url: string;
     username: string;

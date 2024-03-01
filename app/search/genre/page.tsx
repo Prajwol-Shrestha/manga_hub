@@ -1,8 +1,8 @@
 import fetcher from "@/app/apis/fetcher";
 import endpoints from "@/app/apis/mangas/endpoints";
 import GenreSearchSection from "@/app/components/GenreSearchSection/GenreSearchSection";
-import GenreSection from "@/app/components/TopSection/GenreSection";
-import Top10Section from "@/app/components/TopSection/Top10Section";
+import GenreSection from "@/app/components/GenreSection/GenreSection";
+import Top10Section from "@/app/components/Top10Section/Top10Section";
 import TwoThirdsOneThirdLayout from "@/app/components/layouts/TwoThirdsOneThirdLayout";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import React from "react";
@@ -16,7 +16,9 @@ function SecondaryChildren() {
   );
 }
 
-export default async function page(params) {
+export default async function page(params: {
+  searchParams: { id: string; name: string };
+}) {
   const { searchParams } = params ?? {};
   const { id, name } = searchParams;
   const endpoint = endpoints.mangaList;

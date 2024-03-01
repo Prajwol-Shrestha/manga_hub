@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "../Typography/Typography";
+import Typography from "../../Typography/Typography";
 import Image from "next/image";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Link from "next/link";
