@@ -12,7 +12,7 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
-  const {data, status} = useSession()
+  const { data, status } = useSession();
 
   function handleSearch(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,8 +22,8 @@ export default function Navbar() {
     router.push(`/search?query=${searchValue}`);
   }
 
-  function handleLogout(){
-    signOut()
+  function handleLogout() {
+    signOut();
   }
   return (
     <nav className="bg-secondary-600 text-white">
@@ -66,24 +66,37 @@ export default function Navbar() {
               <Link href={link.link}> {link.title} </Link>{" "}
             </li>
           ))}
-          <div className="flex gap-2">
-            {status === 'authenticated' ? <Button intent={"primary"} size={"small"} className="py-2" onClick={handleLogout}>
+          <div className="flex gap-2 items-center">
+            {status === "authenticated" ? (
+              <>
+                {/* <div className="text-xl"> */}
+                  {" "}
+                  <Link href={"/profile"}> Profile </Link>{" "}
+                {/* </div> */}
+                <Button
+                  intent={"primary"}
+                  size={"small"}
+                  className="py-2"
+                  onClick={handleLogout}
+                >
                   {" "}
                   Logout{" "}
-                </Button> : (
+                </Button>
+              </>
+            ) : (
               <>
-              <Link href={"/login"}>
-                <Button intent={"primary"} size={"small"} className="py-2">
-                  {" "}
-                  Login{" "}
-                </Button>
-              </Link>
-              <Link href={"/signup"}>
-                <Button intent={"outline"} size={"small"} className="py-2">
-                  {" "}
-                  Sign up{" "}
-                </Button>
-              </Link>
+                <Link href={"/login"}>
+                  <Button intent={"primary"} size={"small"} className="py-2">
+                    {" "}
+                    Login{" "}
+                  </Button>
+                </Link>
+                <Link href={"/signup"}>
+                  <Button intent={"outline"} size={"small"} className="py-2">
+                    {" "}
+                    Sign up{" "}
+                  </Button>
+                </Link>
               </>
             )}
           </div>
