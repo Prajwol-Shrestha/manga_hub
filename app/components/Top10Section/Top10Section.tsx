@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Typography from "../Typography/Typography";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
-import fetcher from "@/app/apis/fetcher";
-import endpoints from "@/app/apis/mangas/endpoints";
+import fetcher from "@/app/api/fetcher";
+import endpoints from "@/app/api/mangas/endpoints";
 import Top10Card from "../Cards/Top10Card";
 import useSWR from "swr";
 

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Button from "../Buttons/Button";
-import fetcher from "@/app/apis/fetcher";
-import endpoints from "@/app/apis/mangas/endpoints";
+import fetcher from "@/app/api/fetcher";
+import endpoints from "@/app/api/mangas/endpoints";
 import GenreTag from "../Cards/GenreTag";
 import { MangaGenres } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Typography from "../Typography/Typography";

@@ -1,5 +1,5 @@
-import fetcher from "@/app/apis/fetcher";
-import endpoints from "@/app/apis/mangas/endpoints";
+import fetcher from "@/app/api/fetcher";
+import endpoints from "@/app/api/mangas/endpoints";
 import IconButton from "@/app/components/Buttons/IconButton";
 import RecommendedMangas from "@/app/components/RecommendedSection/RecommendedMangas";
 import GenreSection from "@/app/components/GenreSection/GenreSection";

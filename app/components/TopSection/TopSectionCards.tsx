@@ -1,8 +1,8 @@
 import React from "react";
 import Typography from "../Typography/Typography";
 import Card from "../Cards/Card";
-import fetcher from "@/app/apis/fetcher";
-import endpoints from "@/app/apis/mangas/endpoints";
+import fetcher from "@/app/api/fetcher";
+import endpoints from "@/app/api/mangas/endpoints";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
 export default async function TopSectionCards({

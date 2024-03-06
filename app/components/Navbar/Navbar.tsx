@@ -5,25 +5,42 @@ import Link from "next/link";
 import InputWithIcon from "../InputWithIcon/InputWithIcon";
 import Typography from "../Typography/Typography";
 import { useRouter } from "next/navigation";
+import Button from "../Buttons/Button";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [searchValue, setSearchValue] = useState('')
-  const router = useRouter()
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
+  const {data, status} = useSession()
 
-  function handleSearch(e: React.FormEvent<HTMLFormElement>){
-    e.preventDefault()
-    if(!searchValue){
-      return
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!searchValue) {
+      return;
     }
-    router.push(`/search?query=${searchValue}`)
+    router.push(`/search?query=${searchValue}`);
+  }
+
+  function handleLogout(){
+    signOut()
   }
   return (
     <nav className="bg-secondary-600 text-white">
       <div className="container flex items-center justify-between px-2 py-4">
-        <Typography variant={'h6'} className="text-primary"> Manga </Typography>
+        <Typography variant={"h6"} className="text-primary">
+          {" "}
+          Manga{" "}
+        </Typography>
         <form onSubmit={handleSearch}>
-          <InputWithIcon type="text" icon="icons8:search" placeholder="Search..." value={searchValue} setSearchValue={setSearchValue} handleSearch={handleSearch}/>
+          <InputWithIcon
+            type="text"
+            icon="icons8:search"
+            placeholder="Search..."
+            value={searchValue}
+            setSearchValue={setSearchValue}
+            handleSearch={handleSearch}
+          />
         </form>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
@@ -49,6 +66,27 @@ export default function Navbar() {
               <Link href={link.link}> {link.title} </Link>{" "}
             </li>
           ))}
+          <div className="flex gap-2">
+            {status === 'authenticated' ? <Button intent={"primary"} size={"small"} className="py-2" onClick={handleLogout}>
+                  {" "}
+                  Logout{" "}
+                </Button> : (
+              <>
+              <Link href={"/login"}>
+                <Button intent={"primary"} size={"small"} className="py-2">
+                  {" "}
+                  Login{" "}
+                </Button>
+              </Link>
+              <Link href={"/signup"}>
+                <Button intent={"outline"} size={"small"} className="py-2">
+                  {" "}
+                  Sign up{" "}
+                </Button>
+              </Link>
+              </>
+            )}
+          </div>
         </ul>
       </div>
       {showNavbar && (
@@ -68,6 +106,20 @@ export default function Navbar() {
                 <Link href={link.link}> {link.title} </Link>{" "}
               </li>
             ))}
+            <div className="flex gap-2">
+              <Link href={"/login"}>
+                <Button intent={"primary"} size={"small"} className="py-2">
+                  {" "}
+                  Login{" "}
+                </Button>
+              </Link>
+              <Link href={"/signup"}>
+                <Button intent={"outline"} size={"small"} className="py-2">
+                  {" "}
+                  Sign up{" "}
+                </Button>
+              </Link>
+            </div>
           </ul>
         </div>
       )}

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
-import endpoints from "../apis/mangas/endpoints";
-import fetcher from "../apis/fetcher";
+import endpoints from "../api/mangas/endpoints";
+import fetcher from "../api/fetcher";
 import {
   JikanManga,
   MangaRecommendedByUser,

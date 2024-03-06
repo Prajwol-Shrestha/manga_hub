@@ -1,5 +1,5 @@
-import fetcher from "@/app/apis/fetcher";
-import endpoints from "@/app/apis/mangas/endpoints";
+import fetcher from "@/app/api/fetcher";
+import endpoints from "@/app/api/mangas/endpoints";
 import GenreSearchSection from "@/app/components/GenreSearchSection/GenreSearchSection";
 import GenreSection from "@/app/components/GenreSection/GenreSection";
 import Top10Section from "@/app/components/Top10Section/Top10Section";

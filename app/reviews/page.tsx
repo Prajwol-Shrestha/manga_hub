@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../components/Typography/Typography";
-import fetcher from "../apis/fetcher";
-import endpoints from "../apis/mangas/endpoints";
+import fetcher from "../api/fetcher";
+import endpoints from "../api/mangas/endpoints";
 import { Review } from "../types/Manga/Jikan/JikanMangaTypes";
 import ReviewCard from "../components/Cards/ReviewCard";
 
