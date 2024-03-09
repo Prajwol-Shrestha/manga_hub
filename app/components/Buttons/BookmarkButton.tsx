@@ -16,9 +16,9 @@ export default function BookmarkButton({
 }: BookmarkButtonProps) {
   const stringMalId = String(mal_id);
 
-  async function handleBookmarkManga(e) {
+  async function handleBookmarkManga(e: React.MouseEvent) {
     e.preventDefault();
-    const response = fetch("/api/bookmarks", {
+    const response = await fetch("/api/bookmarks", {
       method: "POST",
       body: JSON.stringify({ mal_id: stringMalId, title, image }),
     });

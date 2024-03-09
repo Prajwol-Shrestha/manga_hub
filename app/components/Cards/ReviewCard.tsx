@@ -23,7 +23,7 @@ export default function ReviewCard({ review }: { review: Review }) {
         />
       </div>
       <div className="w-2/3 px-2 py-4">
-        <Link href={`/details/${entry.mal_id}`}>
+      <Link href={`/details/${entry.mal_id}`}>
           <Typography variant={"h6"} className="text-white">
             {" "}
             {entry.title}{" "}
@@ -32,11 +32,11 @@ export default function ReviewCard({ review }: { review: Review }) {
         <div className="my-2 flex flex-col text-white/80">
           <Typography variant={"caption"}>
             {" "}
-            Posted By: {user.username}
+            Posted By: {user?.username}
           </Typography>
           <Typography variant={"caption"}> Posted on: {date}</Typography>
         </div>
-        <div className="my-4 flex gap-2 flex-wrap">
+        <div className="my-4 flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Button
               intent={"chip"}
@@ -56,7 +56,7 @@ export default function ReviewCard({ review }: { review: Review }) {
           {" "}
           {mangaReview}{" "}
         </Typography>
-        <div className="flex mt-4 gap-2 flex-col sm:flex-row">
+        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
           <Link href={`/details/${entry.mal_id}`} className="sm:w-1/2">
             <IconButton
               intent={"primary"}
@@ -66,7 +66,11 @@ export default function ReviewCard({ review }: { review: Review }) {
               additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200 w-full"
             />
           </Link>
-          <BookmarkButton mal_id={entry.mal_id} title={entry.title} image={entry.images.webp.image_url}/>
+          <BookmarkButton
+            mal_id={entry.mal_id}
+            title={entry.title}
+            image={entry.images.webp.image_url}
+          />
         </div>
       </div>
     </div>

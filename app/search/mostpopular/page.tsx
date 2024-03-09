@@ -16,7 +16,7 @@ function SecondaryChildren() {
   );
 }
 
-export default async function page() {
+export default async function Page() {
   const endpoint = endpoints.mangaList;
   const data = await fetcher(endpoint, { "orderBy": "popularity" });
   const datas = data.data as JikanManga[];

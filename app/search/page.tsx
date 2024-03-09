@@ -20,7 +20,7 @@ interface PaginationInterface {
   };
 }
 
-export default function page(params: { searchParams: { query: string } }) {
+export default function Page(params: { searchParams: { query: string } }) {
   const { searchParams } = params ?? {};
   const { query } = searchParams;
   const [datas, setDatas] = useState<JikanManga[]>([]);

@@ -16,7 +16,7 @@ function SecondaryChildren() {
   );
 }
 
-export default async function page(params: {
+export default async function Page(params: {
   searchParams: { id: string; name: string };
 }) {
   const { searchParams } = params ?? {};

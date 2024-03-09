@@ -5,7 +5,7 @@ import Button from "../components/Buttons/Button";
 import { signIn, useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 
-export default function page() {
+export default function Page() {
     const {data, status } = useSession()
     const [userInfo, setUserInfo] = useState({email: '', password: ''})
     const router = useRouter()

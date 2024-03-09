@@ -23,7 +23,7 @@ function SecondaryChild() {
   );
 }
 
-export default async function page() {
+export default async function Page() {
   const data = await fetcher(endpoints.randomManga);
   const mangaInfo = data.data as JikanManga;
   const { images, title, synopsis, mal_id } = mangaInfo ?? {};

@@ -9,9 +9,10 @@ import Card from "../components/Cards/Card";
 import { AnotherFetcher } from "../api/fetcher";
 import Loading from "../components/Loading/Loading";
 
-export default function page() {
+
+
+export default function Page() {
   const { data: sessiondata, status } = useSession();
-  console.log(sessiondata)
   const [bookmarksData, setBookmarksData] = useState<JikanManga[]>([]);
 
   if (status === "unauthenticated") {

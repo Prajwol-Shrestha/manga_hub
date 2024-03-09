@@ -20,7 +20,7 @@ function SecondaryChild() {
   );
 }
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const endpoint = endpoints.manga.concat(`/${slug}`);
   const data = await fetcher(endpoint);

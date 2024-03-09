@@ -118,6 +118,9 @@ export interface Review {
   is_preliminary: boolean;
   chapters_read: number | null;
   entry: Entry;
+  user?: {
+    username: string;
+  };
 }
 
 export interface Entry {

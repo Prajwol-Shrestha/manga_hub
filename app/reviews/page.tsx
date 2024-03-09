@@ -5,7 +5,7 @@ import endpoints from "../api/mangas/endpoints";
 import { Review } from "../types/Manga/Jikan/JikanMangaTypes";
 import ReviewCard from "../components/Cards/ReviewCard";
 
-export default async function page() {
+export default async function Page() {
   const data = await fetcher(endpoints.mangaReviews, {
     preliminary: "true",
     spoiler: "true",

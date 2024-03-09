@@ -12,7 +12,7 @@ import Typography from "../components/Typography/Typography";
 import Loading from "../components/Loading/Loading";
 import Card from "../components/Cards/Card";
 
-export default function page() {
+export default function Page() {
   const [page, setPage] = useState(1);
   const [datas, setDatas] = useState<JikanManga[]>([]);
 
