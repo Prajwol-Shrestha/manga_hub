@@ -66,13 +66,13 @@ export default function Navbar() {
               <Link href={link.link}> {link.title} </Link>{" "}
             </li>
           ))}
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             {status === "authenticated" ? (
               <>
-                {/* <div className="text-xl"> */}
+                <Link href={"/profile"} className="text-l">
                   {" "}
-                  <Link href={"/profile"}> Profile </Link>{" "}
-                {/* </div> */}
+                  Profile{" "}
+                </Link>
                 <Button
                   intent={"primary"}
                   size={"small"}
@@ -119,19 +119,39 @@ export default function Navbar() {
                 <Link href={link.link}> {link.title} </Link>{" "}
               </li>
             ))}
-            <div className="flex gap-2">
-              <Link href={"/login"}>
-                <Button intent={"primary"} size={"small"} className="py-2">
-                  {" "}
-                  Login{" "}
-                </Button>
-              </Link>
-              <Link href={"/signup"}>
-                <Button intent={"outline"} size={"small"} className="py-2">
-                  {" "}
-                  Sign up{" "}
-                </Button>
-              </Link>
+            <div className="flex flex-col gap-2">
+              {status === "authenticated" ? (
+                <>
+                  <Link href={"/profile"} className="text-l">
+                    {" "}
+                    Profile{" "}
+                  </Link>{" "}
+                  <Button
+                    intent={"primary"}
+                    size={"small"}
+                    className="py-2"
+                    onClick={handleLogout}
+                  >
+                    {" "}
+                    Logout{" "}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link href={"/login"}>
+                    <Button intent={"primary"} size={"small"} className="py-2">
+                      {" "}
+                      Login{" "}
+                    </Button>
+                  </Link>
+                  <Link href={"/signup"}>
+                    <Button intent={"outline"} size={"small"} className="py-2">
+                      {" "}
+                      Sign up{" "}
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </ul>
         </div>

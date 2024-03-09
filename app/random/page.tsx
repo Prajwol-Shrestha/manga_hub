@@ -12,6 +12,7 @@ import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Image from "next/image";
 import React from "react";
 import Overlay from "../components/Overlay/Overlay";
+import BookmarkButton from "../components/Buttons/BookmarkButton";
 
 function SecondaryChild() {
   return (
@@ -54,13 +55,7 @@ export default async function page() {
                   iconPlacement={"left"}
                   additionalClassNames="rounded-xl text-secondary-600 text-sm"
                 />
-                <IconButton
-                  intent={"primary"}
-                  text="Add to List"
-                  icon={"ic:baseline-plus"}
-                  iconPlacement={"right"}
-                  additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
-                />
+                <BookmarkButton mal_id={mal_id} title={title} image={images.webp.image_url}/>
               </div>
               <Typography
                 variant={"body1"}

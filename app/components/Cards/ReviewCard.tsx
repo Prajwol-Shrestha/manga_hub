@@ -6,6 +6,7 @@ import Button from "../Buttons/Button";
 import { Review } from "../../types/Manga/Jikan/JikanMangaTypes";
 import tagColor from "../../utils/tagColor";
 import IconButton from "../Buttons/IconButton";
+import BookmarkButton from "../Buttons/BookmarkButton";
 
 export default function ReviewCard({ review }: { review: Review }) {
   const { entry, mal_id, user, date, tags, review: mangaReview } = review ?? {};
@@ -65,13 +66,7 @@ export default function ReviewCard({ review }: { review: Review }) {
               additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200 w-full"
             />
           </Link>
-          <IconButton
-            text="Add to Bookmarks"
-            intent={"secondary"}
-            iconPlacement="right"
-            icon={"ic:baseline-plus"}
-            additionalClassNames="rounded-xl text-white text-sm bg-secondary hover:text-secondary w-full sm:max-w-[300px]"
-          />
+          <BookmarkButton mal_id={entry.mal_id} title={entry.title} image={entry.images.webp.image_url}/>
         </div>
       </div>
     </div>

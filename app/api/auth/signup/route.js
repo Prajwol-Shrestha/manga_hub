@@ -2,8 +2,11 @@ import bcrypt from 'bcrypt'
 // import prisma from '../../libs/prismadb'
 import { NextResponse } from 'next/server'
 import prisma from '../../../utils/connect'
+import {getAuthSession} from '../../../utils/auth'
 
 export async function POST(request){
+    const sessoin = await getAuthSession()
+    console.log(sessoin, 'post')
     const body = await request.json();
     const { name, email, password } = body;
 

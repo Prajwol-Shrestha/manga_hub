@@ -8,22 +8,27 @@ import {
 } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import PGRatingCard from "../PGRatingCard/PGRatingCard";
 import Link from "next/link";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+
+interface CardProps extends JikanManga{
+  image?: string | StaticImport;
+}
 
 export default function Card({
   item,
   votes,
 }: {
-  item: JikanManga;
+  item: CardProps;
   votes?: number;
 }) {
-  const { title, images, status, rank, score, mal_id } =
-    (item as JikanManga) ?? {};
+  const { title, images, image, status, rank, score, mal_id } =
+    (item as CardProps) ?? {};
 
   return (
     <div className="min-w-[250px] flex-1 bg-secondary-400 sm:max-w-[300px]">
       <div className="relative h-[200px]">
         <Image
-          src={images.webp.image_url ?? images.jpg.image_url}
+          src={image ?? images.webp.image_url ?? images.jpg.image_url}
           width={200}
           height={400}
           alt="test"

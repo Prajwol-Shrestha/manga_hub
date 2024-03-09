@@ -27,3 +27,16 @@ export default async function fetcher(endpoint: string, queryParams: QueryParams
         throw new Error('An error occurred while fetching data.');
     }
 }
+
+
+export const AnotherFetcher = async (url: string) => {
+    const res = await fetch(url);
+    const data = await res.json();
+  
+    if (!res.ok) {
+      const error = new Error(data.message);
+      throw error;
+    }
+  
+    return data;
+  };

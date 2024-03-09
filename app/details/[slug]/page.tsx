@@ -9,6 +9,7 @@ import TwoThirdsOneThirdLayout from "@/app/components/layouts/TwoThirdsOneThirdL
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Image from "next/image";
 import React from "react";
+import BookmarkButton from "@/app/components/Buttons/BookmarkButton";
 
 function SecondaryChild() {
   return (
@@ -24,7 +25,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   const endpoint = endpoints.manga.concat(`/${slug}`);
   const data = await fetcher(endpoint);
   const mangaInfo = data.data as JikanManga;
-  const { images, title, synopsis } = mangaInfo ?? {};
+  const { images, title, synopsis, mal_id } = mangaInfo ?? {};
 
   return (
     <main>
@@ -53,12 +54,10 @@ export default async function page({ params }: { params: { slug: string } }) {
                   iconPlacement={"left"}
                   additionalClassNames="rounded-xl text-secondary-600 text-sm"
                 />
-                <IconButton
-                  intent={"primary"}
-                  text="Add to List"
-                  icon={"ic:baseline-plus"}
-                  iconPlacement={"right"}
-                  additionalClassNames="rounded-xl text-secondary-600 text-sm bg-slate-200"
+                <BookmarkButton
+                  mal_id={mal_id}
+                  title={title}
+                  image={images.webp.image_url}
                 />
               </div>
               <Typography
@@ -76,7 +75,7 @@ export default async function page({ params }: { params: { slug: string } }) {
         <div className="absolute bottom-0 h-16 w-full bg-gradient-to-t from-secondary to-transparent"></div>
       </section>
       <TwoThirdsOneThirdLayout
-        primaryChild={<RecommendedMangas id={slug}/>}
+        primaryChild={<RecommendedMangas id={slug} />}
         secondaryChild={<SecondaryChild />}
       />
     </main>
