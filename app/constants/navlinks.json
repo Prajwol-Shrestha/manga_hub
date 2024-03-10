@@ -18,5 +18,9 @@
   {
     "title": "Reviews",
     "link": "/reviews"
+  },
+  {
+    "title": "Search",
+    "link": "/search"
   }
 ]

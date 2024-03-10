@@ -29,7 +29,7 @@ export default function InputWithIcon({
       <input
         type={type ?? "text"}
         placeholder={placeholder ?? "Search..."}
-        className="rounded-lg bg-inherit px-2 py-1 focus-visible:outline-none"
+        className="rounded-lg bg-inherit px-2 py-1 focus-visible:outline-none flex-1"
         value={value}
         onChange={(e) => setSearchValue(e.target.value)}
       />

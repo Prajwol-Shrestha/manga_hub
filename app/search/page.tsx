@@ -8,6 +8,9 @@ import Typography from "../components/Typography/Typography";
 import useSWR from "swr";
 import Loading from "../components/Loading/Loading";
 import Card from "../components/Cards/Card";
+import InputWithIcon from "../components/InputWithIcon/InputWithIcon";
+import useDebounce from "@/app/hooks/useDebounce";
+import { useRouter } from "next/navigation";
 
 interface PaginationInterface {
   page: number;
@@ -20,35 +23,62 @@ interface PaginationInterface {
   };
 }
 
-export default function Page(params: { searchParams: { query: string } }) {
-  const { searchParams } = params ?? {};
-  const { query } = searchParams;
+export default function Page() {
   const [datas, setDatas] = useState<JikanManga[]>([]);
   const [page, setPage] = useState(1);
-  const endpoint = endpoints.mangaList + `?q=${query}&page=${page}&sfw=true`;
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
 
-  const { isLoading, error, data: dataFromAPI } = useSWR(endpoint, fetcher);
+  const debouncedSearch = useDebounce(searchValue, 2000);
+  const endpoint =
+    endpoints.mangaList + `?q=${debouncedSearch}&page=${page}&sfw=true`;
+
+  const {
+    isLoading,
+    error,
+    data: dataFromAPI,
+  } = useSWR(debouncedSearch ? endpoint : null, fetcher);
   const { pagination }: { pagination?: PaginationInterface } =
     dataFromAPI ?? {};
 
   useEffect(() => {
-    if (query) {
+    if (debouncedSearch) {
       setDatas([]);
+      return;
     }
-  }, [query]);
+    if (debouncedSearch) {
+      router.replace(`?query=${searchValue}`);
+    }
+  }, [debouncedSearch]);
 
   useEffect(() => {
-    if (!isLoading && !error) {
+    if (!isLoading && !error && dataFromAPI?.data) {
       setDatas((prev) => [...prev, ...dataFromAPI.data]);
     }
   }, [dataFromAPI, page]);
 
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!searchValue) {
+      return;
+    }
+    router.push(`/search?query=${searchValue}`);
+  }
+
   return (
     <main className="container">
       <div className="my-8 flex flex-col gap-4">
-        <Typography variant={"h4"} className="text-white">
-          Search Query: {query}
-        </Typography>
+        <form onSubmit={handleSearch}>
+          <InputWithIcon
+            type="text"
+            icon="icons8:search"
+            placeholder="Search..."
+            value={searchValue}
+            setSearchValue={setSearchValue}
+            handleSearch={handleSearch}
+            additonalClass="py-1 sm:py-2"
+          />
+        </form>
         <Typography variant={"h4"} className="text-white">
           {" "}
           ({pagination?.items.total}) Search Results{" "}
