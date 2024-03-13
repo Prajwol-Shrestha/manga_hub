@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import React from "react";
 import Typography from "../Typography/Typography";
 import PGRatingCard from "../PGRatingCard/PGRatingCard";
@@ -11,12 +11,11 @@ export default function FeaturedCard({ item }: { item: JikanManga }) {
   return (
     <div className="flex items-center gap-4">
       <div className="h-[150px] rounded-lg">
-        <Image
-          src={images?.webp?.image_url}
-          width={130}
-          height={150}
+        <img
+          src={String(images?.webp?.image_url)}
           alt={title}
           className="h-full rounded-lg object-cover"
+          loading="lazy"
         />
       </div>
       <div className="w-[60%]">

@@ -33,7 +33,7 @@ export default function Page() {
   }
 
   return (
-    <main className="container flex min-h-[90vh] items-center justify-center">
+    <main className="container flex items-center justify-center">
       <div className="mx-auto w-11/12 bg-secondary-300 px-6 py-8 md:max-w-[800px]">
         <Typography variant={"h4"} className="text-center text-primary">
           {" "}

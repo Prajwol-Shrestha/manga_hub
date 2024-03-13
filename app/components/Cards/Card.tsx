@@ -1,16 +1,11 @@
-import Image from "next/image";
 import React from "react";
 import Typography from "../Typography/Typography";
-import Dot from "../Dot/Dot";
-import {
-  JikanManga,
-  RecommendedMangaType,
-} from "@/app/types/Manga/Jikan/JikanMangaTypes";
+import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import PGRatingCard from "../PGRatingCard/PGRatingCard";
 import Link from "next/link";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-interface CardProps extends JikanManga{
+interface CardProps extends JikanManga {
   image?: string | StaticImport;
 }
 
@@ -27,12 +22,11 @@ export default function Card({
   return (
     <div className="min-w-[250px] flex-1 bg-secondary-400 sm:max-w-[300px]">
       <div className="relative h-[200px]">
-        <Image
-          src={image ?? images.webp.image_url ?? images.jpg.image_url}
-          width={200}
-          height={400}
+        <img
+          src={String(image ?? images.webp.image_url ?? images.jpg.image_url)}
           alt="test"
           className="h-full w-full object-cover"
+          loading="lazy"
         />
         <div className="absolute bottom-0 h-full w-full bg-gradient-to-b from-transparent to-secondary-400"></div>
         {score && (

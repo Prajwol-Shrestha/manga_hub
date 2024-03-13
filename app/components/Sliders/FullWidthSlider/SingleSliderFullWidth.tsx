@@ -30,7 +30,7 @@ export default function SingleSliderFullWidth({ item }: { item: JikanManga }) {
         <div className="flex gap-4">
           <IconButton
             intent={"primary"}
-            text="Watch Now"
+            text="Read Now"
             icon={"material-symbols:play-circle-rounded"}
             iconPlacement={"left"}
             additionalClassNames="rounded-xl text-secondary-600 text-sm"
@@ -46,12 +46,11 @@ export default function SingleSliderFullWidth({ item }: { item: JikanManga }) {
           </Link>
         </div>
       </div>
-      <Image
+      <img
         src={images.webp.image_url}
-        width={800}
-        height={600}
         alt={title}
         className="ml-auto h-full max-h-[600px] w-full object-cover"
+        loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/40 to-secondary/40"></div>
       {/* <div className="absolute inset-0 bg-gradient-to-t from-transparent to-secondary"></div> */}

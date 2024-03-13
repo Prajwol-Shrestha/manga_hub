@@ -38,12 +38,14 @@ export default function Page() {
     error,
     data: dataFromAPI,
   } = useSWR(debouncedSearch ? endpoint : null, fetcher);
+  
   const { pagination }: { pagination?: PaginationInterface } =
     dataFromAPI ?? {};
 
   useEffect(() => {
-    if (debouncedSearch) {
+    if (debouncedSearch === '') {
       setDatas([]);
+      router.replace(`/search`, undefined)
       return;
     }
     if (debouncedSearch) {
@@ -79,12 +81,20 @@ export default function Page() {
             additonalClass="py-1 sm:py-2"
           />
         </form>
-        <Typography variant={"h4"} className="text-white">
-          {" "}
-          ({pagination?.items.total}) Search Results{" "}
-        </Typography>
+        {debouncedSearch !== "" && (
+          <Typography variant={"h4"} className="text-white">
+            {" "}
+            ({pagination?.items.total}) Search Results{" "}
+          </Typography>
+        )}
       </div>
       <section className="my-6">
+        {debouncedSearch === "" && (
+          <Typography variant={"body1"} className="text-white/90 text-center">
+            {" "}
+            Search Mangas{" "}
+          </Typography>
+        )}
         {isLoading && datas.length === 0 && <Loading />}
         {(!isLoading || datas.length > 0) && (
           <>

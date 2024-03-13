@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import navlinks from "@/app/constants/navlinks.json";
 import Link from "next/link";
-import InputWithIcon from "../InputWithIcon/InputWithIcon";
 import Typography from "../Typography/Typography";
 import { useRouter } from "next/navigation";
 import Button from "../Buttons/Button";
@@ -26,7 +25,7 @@ export default function Navbar() {
         </Typography>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
-          className={`z-30 flex sm:hidden ${showNavbar ? "opened" : ""}`}
+          className={`z-30 flex md:hidden ${showNavbar ? "opened" : ""}`}
         >
           <svg width="40" height="40" viewBox="0 0 100 100">
             <path
@@ -41,7 +40,7 @@ export default function Navbar() {
           </svg>
         </div>
 
-        <ul className="hidden items-center justify-center gap-4 sm:flex">
+        <ul className="hidden items-center justify-center gap-4 md:flex">
           {navlinks.map((link) => (
             <li key={link.title}>
               {" "}
@@ -87,7 +86,7 @@ export default function Navbar() {
       {showNavbar && (
         <div
           onClick={() => setShowNavbar(false)}
-          className="absolute top-0 z-20 flex h-full w-full items-center justify-end bg-secondary-300/90 sm:hidden"
+          className="absolute top-0 z-20 flex h-full w-full items-center justify-end bg-secondary-300/90 md:hidden"
         >
           <ul
             onClick={(e) => {

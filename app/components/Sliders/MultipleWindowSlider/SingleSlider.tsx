@@ -40,12 +40,11 @@ export default function SingleSlider({
         </Typography>
       </div>
       <Link href={`/details/${mal_id}`} className="w-full sm:w-[80%]">
-        <Image
+        <img
           src={images.webp.image_url}
-          width={300}
-          height={200}
+          loading="lazy"
           alt={title}
-          // className="w-full sm:w-[80%]"
+          className="w-full"
         />
       </Link>
     </div>

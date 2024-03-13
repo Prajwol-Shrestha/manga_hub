@@ -14,12 +14,11 @@ export default function ReviewCard({ review }: { review: Review }) {
   return (
     <div className="flex gap-4 rounded bg-secondary-400">
       <div className="h-full w-1/3 rounded">
-        <Image
+        <img
           src={entry.images.webp.image_url}
-          width={200}
-          height={200}
           alt={entry.title}
           className="h-full w-full rounded-bl rounded-tl object-fill"
+          loading="lazy"
         />
       </div>
       <div className="w-2/3 px-2 py-4">

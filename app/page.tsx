@@ -4,7 +4,7 @@ import RecentMangas from "./components/RecentMangas/RecentMangas";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex flex-col">
       <Hero />
       <Trending />
       <RecentMangas />

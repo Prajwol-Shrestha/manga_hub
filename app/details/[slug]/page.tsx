@@ -33,10 +33,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div className="bg-slate-900/40 py-12 backdrop-blur-xl">
           <div className="container flex flex-col gap-4 sm:flex-row">
             <div className="h-[20vh] sm:h-[40vh] sm:basis-1/3">
-              <Image
+              <img
                 src={images.webp.image_url}
-                width={600}
-                height={400}
+                loading="lazy"
                 alt={title}
                 className="h-full object-contain"
               />
@@ -49,7 +48,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               <div className="flex gap-4">
                 <IconButton
                   intent={"primary"}
-                  text="Watch Now"
+                  text="Read Now"
                   icon={"material-symbols:play-circle-rounded"}
                   iconPlacement={"left"}
                   additionalClassNames="rounded-xl text-secondary-600 text-sm"

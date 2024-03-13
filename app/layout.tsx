@@ -19,8 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
-      <body className={inter.className}>
+      <body className={`flex flex-col justify-between h-screen ${inter.className}`}>
         <AuthProvider>
           <Navbar /> 
           {children}

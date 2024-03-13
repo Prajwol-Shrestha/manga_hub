@@ -10,7 +10,6 @@ import { AnotherFetcher } from "../api/fetcher";
 import Loading from "../components/Loading/Loading";
 
 
-
 export default function Page() {
   const { data: sessiondata, status } = useSession();
   const [bookmarksData, setBookmarksData] = useState<JikanManga[]>([]);
@@ -35,7 +34,7 @@ export default function Page() {
   }, [apiData]);
 
   return (
-    <main className="container flex min-h-[90vh] flex-col  items-center">
+    <main className="container flex flex-col  items-center">
       <Typography
         variant={"h4"}
         className="my-10 text-center capitalize text-primary"
