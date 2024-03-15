@@ -18,10 +18,14 @@ export default function BookmarkButton({
 
   async function handleBookmarkManga(e: React.MouseEvent) {
     e.preventDefault();
-    const response = await fetch("/api/bookmarks", {
-      method: "POST",
-      body: JSON.stringify({ mal_id: stringMalId, title, image }),
-    });
+    try {
+      const response = await fetch("/api/bookmarks", {
+        method: "POST",
+        body: JSON.stringify({ mal_id: stringMalId, title, image }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <>

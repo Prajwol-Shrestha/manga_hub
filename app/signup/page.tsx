@@ -21,13 +21,17 @@ export default function Page() {
 
   async function handleSignUp(e: any) {
     e.preventDefault();
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      body: JSON.stringify(userInfo),
-    });
-
-    if(response.status === 200){
-      router.push("/login")
+    try{
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify(userInfo),
+      });
+  
+      if(response.status === 200){
+        router.push("/login")
+      }
+    } catch (error){
+      console.log(error)
     }
     
   }
