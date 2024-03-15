@@ -7,6 +7,7 @@ import fetcher from "@/app/api/fetcher";
 import endpoints from "@/app/api/mangas/endpoints";
 import Top10Card from "../Cards/Top10Card";
 import useSWR from "swr";
+import Top10CardSkeleton from "../Skeletons/Top10CardSkeleton";
 
 export default function Top10Section() {
   const [timeFrame, settimeFrame] = useState("Today");
@@ -15,20 +16,18 @@ export default function Top10Section() {
   const constructQueryBasedOnTimeFrame = () => {
     if (timeFrame === "Today") {
       // return { limit: "10", page: "1", type: "manga" };
-      return '?limit=10&page=1'
+      return "?limit=10&page=1";
     }
     if (timeFrame === "Weekly") {
       // return { limit: "10", page: "2", type: "manga" };
-      return '?limit=10&page=2'
-
+      return "?limit=10&page=2";
     }
     if (timeFrame === "Monthly") {
       // return { limit: "10", page: "3", type: "manga" };
-      return '?limit=10&page=3'
-
+      return "?limit=10&page=3";
     }
     // return { limit: "10", page: "1", type: "manga" };
-    return '?limit=10&page=1'
+    return "?limit=10&page=1";
   };
 
   // const fetchTopManga = async () => {
@@ -59,7 +58,7 @@ export default function Top10Section() {
     // fetchTopManga();
     if (!error && !isLoading) {
       // setTopMangas((prev) => [...prev, ...data.data]);
-      setTopMangas((prev) =>[...data.data]);
+      setTopMangas((prev) => [...data.data]);
     }
   }, [timeFrame, data]);
 
@@ -92,9 +91,14 @@ export default function Top10Section() {
         </div>
       </div>
       <div className="mt-6  rounded-sm bg-secondary-400 px-4 py-6">
-        {isLoading ? <> Loadung.. </> : topmangas.map((item, index) => (
-          <Top10Card item={item} index={index} key={item.mal_id} />
-        ))}
+        {isLoading
+          ? new Array(10)
+              .fill(0)
+              .map((item, index) => <Top10CardSkeleton key={index} />)
+          : topmangas.map((item, index) => (
+              <Top10Card item={item} index={index} key={item.mal_id} />
+            ))}
+        <Top10CardSkeleton />
       </div>
     </div>
   );

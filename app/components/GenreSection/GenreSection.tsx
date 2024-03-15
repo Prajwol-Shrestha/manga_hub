@@ -7,17 +7,22 @@ import endpoints from "@/app/api/mangas/endpoints";
 import GenreTag from "../Cards/GenreTag";
 import { MangaGenres } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Typography from "../Typography/Typography";
+import Loading from "../Loading/Loading";
+import GenreTagSkeleton from "../Skeletons/GenreTagSkeleton";
 
 export default function GenreSection() {
   const [genres, setGenres] = useState<MangaGenres[]>([]);
   const [showMore, setShowMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const data = await fetcher(endpoints.mangaGenres);
     const datas = data.data as MangaGenres[];
     setGenres(datas);
+    setIsLoading(false);
   };
 
+  // timeout because only 3 api calls per/second is allowed
   useEffect(() => {
     setTimeout(() => {
       fetchData();
@@ -32,17 +37,22 @@ export default function GenreSection() {
       </Typography>
       <div className="mt-6 rounded-sm  bg-secondary-400 px-4 py-6">
         <div className="mb-5 flex flex-wrap gap-4 lg:grid lg:grid-cols-3">
-          {(showMore ? genres : genres.slice(0, 20)).map((item, index) => (
-            <GenreTag key={index} item={item} />
-          ))}
+          {isLoading
+            ? new Array(10)
+                .fill(0)
+                .map((item, index) => <GenreTagSkeleton key={index} />)
+            : (showMore ? genres : genres.slice(0, 20)).map((item, index) => (
+                <GenreTag key={index} item={item} />
+              ))}
         </div>
+
         <Button
           intent={"primary"}
           className="w-full bg-secondary-300/80"
           onClick={() => setShowMore((prev) => !prev)}
         >
           {" "}
-          Show {showMore ? "Less" : "More"}{" "}
+          {isLoading ? <Loading /> : `Show ${showMore ? "Less" : "More"}`}
         </Button>
       </div>
     </>

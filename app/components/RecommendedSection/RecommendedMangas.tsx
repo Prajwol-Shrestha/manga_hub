@@ -1,10 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Typography from "../Typography/Typography";
 import fetcher from "@/app/api/fetcher";
 import endpoints from "@/app/api/mangas/endpoints";
-import {
-  RecommendedMangaType,
-} from "@/app/types/Manga/Jikan/JikanMangaTypes";
+import { RecommendedMangaType } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Card from "../Cards/Card";
 
 export default async function RecommendedMangas({ id }: { id: string }) {
@@ -29,9 +27,9 @@ export default async function RecommendedMangas({ id }: { id: string }) {
         </>
       )}
       {datas.length === 0 && (
-        <Typography variant={"body1"} className="text-white/50 mt-6">
+        <Typography variant={"body1"} className="mt-6 text-white/50">
           {" "}
-          No Related Recommendations. 
+          No Related Recommendations.
         </Typography>
       )}
     </section>

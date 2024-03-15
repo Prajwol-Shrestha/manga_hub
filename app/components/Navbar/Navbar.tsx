@@ -1,17 +1,15 @@
 "use client";
+
 import React, { useState } from "react";
 import navlinks from "@/app/constants/navlinks.json";
 import Link from "next/link";
 import Typography from "../Typography/Typography";
-import { useRouter } from "next/navigation";
 import Button from "../Buttons/Button";
 import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
-  const router = useRouter();
   const { data, status } = useSession();
-
 
   function handleLogout() {
     signOut();
@@ -25,7 +23,7 @@ export default function Navbar() {
         </Typography>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
-          className={`z-30 flex md:hidden ${showNavbar ? "opened" : ""}`}
+          className={`z-30 flex lg:hidden ${showNavbar ? "opened" : ""}`}
         >
           <svg width="40" height="40" viewBox="0 0 100 100">
             <path
@@ -40,7 +38,7 @@ export default function Navbar() {
           </svg>
         </div>
 
-        <ul className="hidden items-center justify-center gap-4 md:flex">
+        <ul className="hidden items-center justify-center gap-4 lg:flex">
           {navlinks.map((link) => (
             <li key={link.title}>
               {" "}
@@ -86,7 +84,7 @@ export default function Navbar() {
       {showNavbar && (
         <div
           onClick={() => setShowNavbar(false)}
-          className="absolute top-0 z-20 flex h-full w-full items-center justify-end bg-secondary-300/90 md:hidden"
+          className="absolute top-0 z-20 flex h-full w-full items-center justify-end bg-secondary-300/90 lg:hidden"
         >
           <ul
             onClick={(e) => {
@@ -120,13 +118,21 @@ export default function Navbar() {
               ) : (
                 <>
                   <Link href={"/login"}>
-                    <Button intent={"primary"} size={"small"} className="py-2">
+                    <Button
+                      intent={"primary"}
+                      size={"small"}
+                      className="w-full py-2"
+                    >
                       {" "}
                       Login{" "}
                     </Button>
                   </Link>
                   <Link href={"/signup"}>
-                    <Button intent={"outline"} size={"small"} className="py-2">
+                    <Button
+                      intent={"outline"}
+                      size={"small"}
+                      className="w-full py-2"
+                    >
                       {" "}
                       Sign up{" "}
                     </Button>

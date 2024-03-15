@@ -12,7 +12,7 @@ export default function CustomSlider({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // auto sliding not works once it reaches end
+  // auto sliding doesn't not works once it reaches end
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();

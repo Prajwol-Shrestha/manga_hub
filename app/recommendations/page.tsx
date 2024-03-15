@@ -11,6 +11,7 @@ import {
 import Typography from "../components/Typography/Typography";
 import Loading from "../components/Loading/Loading";
 import Card from "../components/Cards/Card";
+import CardSkeleton from "../components/Skeletons/CardSkeleton";
 
 export default function Page() {
   const [page, setPage] = useState(1);
@@ -38,16 +39,23 @@ export default function Page() {
         {" "}
         Recommended Mangas{" "}
       </Typography>
-      {isLoading && datas.length === 0 && <Loading />}
-      {(!isLoading || datas.length > 0) && (
-        <>
-          <div className="mt-6 flex flex-wrap gap-6">
-            {datas.map((item, index) => (
-              <Card item={item} key={index} />
-            ))}
-          </div>
-          {isLoading && <Loading />}
-          {/* {has_next_page && (
+      <>
+        <div className="mt-6 flex flex-wrap gap-6">
+          {isLoading &&
+            datas.length === 0 &&
+            new Array(10)
+              .fill(0)
+              .map((item, index) => <CardSkeleton key={index} />)}
+          {(!isLoading || datas.length > 0) && (
+            <>
+              {datas.map((item, index) => (
+                <Card item={item} key={index} />
+              ))}
+              {isLoading && <Loading />}
+            </>
+          )}
+        </div>
+        {/* {has_next_page && (
             <div
               className="mt-4 cursor-pointer rounded bg-secondary-400 py-2 text-center text-white/90 hover:bg-secondary-300/70 hover:text-white"
               onClick={() => setPage((prev) => prev + 1)}
@@ -56,8 +64,7 @@ export default function Page() {
               Load More{" "}
             </div>
           )} */}
-        </>
-      )}
+      </>
     </section>
   );
 }

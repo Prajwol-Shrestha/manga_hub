@@ -8,10 +8,13 @@ export default async function fetcher(endpoint: string, queryParams: QueryParams
     const url = new URL(`${baseURL}${endpoint}`);
 
     
+    
     // Add query parameters to the URL
     Object.keys(queryParams).forEach(key => {
         url.searchParams.append(key, queryParams[key]);
     });
+    
+    url.searchParams.append('sfw', 'true');
 
     try {
         const response = await fetch(url.toString(), { next: { revalidate: 14400 } });
