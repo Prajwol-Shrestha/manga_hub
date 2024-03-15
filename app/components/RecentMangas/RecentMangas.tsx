@@ -34,11 +34,13 @@ export default function RecentMangas() {
       <div className="mt-6 flex flex-wrap gap-6">
         {isLoading &&
           datas.length === 0 &&
-          new Array(5).fill(0).map((index) => <CardSkeleton key={index} />)}
+          new Array(5)
+            .fill(0)
+            .map((item, index) => <CardSkeleton key={index} />)}
         {(!isLoading || datas.length > 0) && (
           <>
             {datas.map((item, index) => (
-              <Suspense fallback={<CardSkeleton />}>
+              <Suspense key={index} fallback={<CardSkeleton />}>
                 <Card item={item} key={index} />
               </Suspense>
             ))}
