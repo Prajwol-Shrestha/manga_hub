@@ -68,7 +68,7 @@ export default function Page() {
   }
 
   return (
-    <main className="container">
+    <section className="container">
       <div className="my-8 flex flex-col gap-4">
         <form onSubmit={handleSearch}>
           <InputWithIcon
@@ -116,6 +116,6 @@ export default function Page() {
           </>
         )}
       </section>
-    </main>
+    </section>
   );
 }

@@ -47,8 +47,8 @@ const config: Config = {
         },
       },
       animation: {
-        slideLeft: "slideLeft 1s ease",
-        slideRight: "slideRight 1s ease",
+        slideLeft: "slideLeft 0.5s ease",
+        slideRight: "slideRight 0.5s ease",
       },
     },
   },

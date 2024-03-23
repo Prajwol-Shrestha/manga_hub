@@ -34,7 +34,7 @@ export default function Page() {
   }, [apiData]);
 
   return (
-    <main className="container flex flex-col  items-center">
+    <section className="container flex flex-col  items-center">
       <Typography
         variant={"h4"}
         className="my-10 text-center capitalize text-primary"
@@ -45,11 +45,11 @@ export default function Page() {
       <Typography variant={"h5"} className="my-3 text-center text-white">
         Bookmarks
       </Typography>
-      <section className="my-6 flex flex-wrap gap-4">
+      <div className="my-6 flex flex-wrap gap-4">
         {isLoading && <Loading />}
         {!isLoading && bookmarksData.length === 0 && <> No data </>}
         {bookmarksData?.map((data) => <Card item={data} key={data.mal_id} />)}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

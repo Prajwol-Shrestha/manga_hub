@@ -13,15 +13,15 @@ export default async function Page() {
   const datas = data.data as Review[];
 
   return (
-    <main className="container my-10">
+    <section className="container my-10">
       <Typography variant={"h3"} className="text-center text-primary">
         Manga Reviews
       </Typography>
-      <section className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
         {datas.map((data, index) => (
           <ReviewCard review={data} key={index} />
         ))}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex  flex-col items-center justify-center gap-4">
+    <div className="flex  flex-col items-center justify-center gap-4 mt-auto">
       <Typography variant={"h3"} className="text-white">
         {" "}
         Something went Wrong!{" "}

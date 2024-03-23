@@ -17,10 +17,12 @@ export default function Navbar() {
   return (
     <nav className="bg-secondary-600 text-white">
       <div className="container flex items-center justify-between px-2 py-4">
+        <Link href={'/'}>
         <Typography variant={"h6"} className="text-primary">
-          {" "}
-          Manga{" "}
-        </Typography>
+            {" "}
+            Manga{" "}
+          </Typography>
+        </Link>
         <div
           onClick={() => setShowNavbar((prev) => !prev)}
           className={`z-30 flex lg:hidden ${showNavbar ? "opened" : ""}`}

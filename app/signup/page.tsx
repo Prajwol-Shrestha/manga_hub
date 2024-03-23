@@ -37,7 +37,7 @@ export default function Page() {
   }
 
   return (
-    <main className="container flex items-center justify-center">
+    <section className="container flex items-center justify-center mt-auto">
       <div className="mx-auto w-11/12 bg-secondary-300 px-6 py-8 md:max-w-[800px]">
         <Typography variant={"h4"} className="text-center text-primary">
           {" "}
@@ -80,6 +80,6 @@ export default function Page() {
           </div>
         </form>
       </div>
-    </main>
+    </section>
   );
 }

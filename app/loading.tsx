@@ -2,7 +2,7 @@ import React from "react";
 
 export default function loading() {
   return (
-    <main className="flex h-screen items-center justify-center">
+    <section className="flex h-screen items-center justify-center">
       <h2 className="font-manrope flex items-center bg-gradient-to-tr from-indigo-600 to-pink-600 bg-clip-text text-4xl font-extrabold text-transparent">
         L{" "}
         <div className="flex h-6 w-6 animate-spin items-center justify-center rounded-md bg-gradient-to-tr from-indigo-500 to-pink-500">
@@ -10,6 +10,6 @@ export default function loading() {
         </div>
         ading...
       </h2>
-    </main>
+    </section>
   );
 }

@@ -2,11 +2,8 @@
 
 import React from "react";
 import IconButton from "./IconButton";
-import {
-  closeSnackbar,
-  showSnackbar,
-} from "@/lib/features/Snackbar/SnackbarSlice";
 import { useAppDispatch } from "@/lib/hooks";
+import { showSnackbarAsync } from "@/lib/features/Snackbar/SnackbarSlice";
 
 interface BookmarkButtonProps {
   mal_id: number;
@@ -32,22 +29,19 @@ export default function BookmarkButton({
 
       if (response.ok) {
         dispatch(
-          showSnackbar({
+          showSnackbarAsync({
             severity: "success",
             message: "Manga Bookmarked Sucessfully",
           }),
         );
       } else {
         dispatch(
-          showSnackbar({
+          showSnackbarAsync({
             severity: "error",
             message: response.statusText,
           }),
         );
       }
-      setTimeout(() => {
-        dispatch(closeSnackbar());
-      }, 3000);
     } catch (error) {
       console.log(error);
     }

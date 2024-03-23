@@ -29,7 +29,7 @@ export default async function Page() {
   const { images, title, synopsis, mal_id } = mangaInfo ?? {};
 
   return (
-    <main>
+    <section>
       <section className="hero relative !bg-cover !bg-center">
         <div className="bg-slate-900/40 py-12 backdrop-blur-xl">
           <div className="container flex flex-col gap-4 sm:flex-row">
@@ -71,6 +71,6 @@ export default async function Page() {
         primaryChild={<RecommendedMangas id={String(mal_id)} />}
         secondaryChild={<SecondaryChild />}
       />
-    </main>
+    </section>
   );
 }

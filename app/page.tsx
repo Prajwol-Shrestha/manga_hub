@@ -20,12 +20,12 @@ const HeroSkeleton = () => {
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <section className="flex flex-col">
       <Suspense fallback={<HeroSkeleton />}>
         <Hero />
         <Trending />
         <RecentMangas />
       </Suspense>
-    </main>
+    </section>
   );
 }

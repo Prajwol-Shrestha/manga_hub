@@ -21,19 +21,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`flex h-screen flex-col justify-between ${inter.className}`}
-      >
-        <StoreProvider>
-          <AuthProvider>
-            <Snackbar />
+      <body className={`${inter.className}`}>
+        <main className="flex h-screen flex-col justify-between ">
+          <StoreProvider>
+            <AuthProvider>
+              <Snackbar />
               <Navbar />
               {children}
               <Footer />
-          </AuthProvider>
-        </StoreProvider>
+            </AuthProvider>
+          </StoreProvider>
+        </main>
+        <div id="snackbar__root" className="relative"></div>
       </body>
-      <div id="snackbar__root" className="relative"></div>
     </html>
   );
 }
