@@ -98,7 +98,6 @@ export default function Top10Section() {
           : topmangas.map((item, index) => (
               <Top10Card item={item} index={index} key={item.mal_id} />
             ))}
-        <Top10CardSkeleton />
       </div>
     </div>
   );

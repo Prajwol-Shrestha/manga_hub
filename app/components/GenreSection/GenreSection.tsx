@@ -38,7 +38,7 @@ export default function GenreSection() {
       <div className="mt-6 rounded-sm  bg-secondary-400 px-4 py-6">
         <div className="mb-5 flex flex-wrap gap-4 lg:grid lg:grid-cols-3">
           {isLoading
-            ? new Array(10)
+            ? new Array(12)
                 .fill(0)
                 .map((item, index) => <GenreTagSkeleton key={index} />)
             : (showMore ? genres : genres.slice(0, 20)).map((item, index) => (

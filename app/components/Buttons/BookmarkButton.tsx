@@ -2,6 +2,11 @@
 
 import React from "react";
 import IconButton from "./IconButton";
+import {
+  closeSnackbar,
+  showSnackbar,
+} from "@/lib/features/Snackbar/SnackbarSlice";
+import { useAppDispatch } from "@/lib/hooks";
 
 interface BookmarkButtonProps {
   mal_id: number;
@@ -15,6 +20,7 @@ export default function BookmarkButton({
   image,
 }: BookmarkButtonProps) {
   const stringMalId = String(mal_id);
+  const dispatch = useAppDispatch();
 
   async function handleBookmarkManga(e: React.MouseEvent) {
     e.preventDefault();
@@ -23,6 +29,25 @@ export default function BookmarkButton({
         method: "POST",
         body: JSON.stringify({ mal_id: stringMalId, title, image }),
       });
+
+      if (response.ok) {
+        dispatch(
+          showSnackbar({
+            severity: "success",
+            message: "Manga Bookmarked Sucessfully",
+          }),
+        );
+      } else {
+        dispatch(
+          showSnackbar({
+            severity: "error",
+            message: response.statusText,
+          }),
+        );
+      }
+      setTimeout(() => {
+        dispatch(closeSnackbar());
+      }, 3000);
     } catch (error) {
       console.log(error);
     }

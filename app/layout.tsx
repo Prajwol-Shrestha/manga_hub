@@ -3,7 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import AuthProvider from "./providers/AuthProvider"
+import AuthProvider from "./providers/AuthProvider";
+import StoreProvider from "./StoreProvider";
+import Snackbar from "./components/Snackbar/Snackbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +21,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`flex flex-col justify-between h-screen ${inter.className}`}>
-        <AuthProvider>
-          <Navbar /> 
-          {children}
-          <Footer />
-        </AuthProvider>
-        </body>
+      <body
+        className={`flex h-screen flex-col justify-between ${inter.className}`}
+      >
+        <StoreProvider>
+          <AuthProvider>
+            <Snackbar />
+              <Navbar />
+              {children}
+              <Footer />
+          </AuthProvider>
+        </StoreProvider>
+      </body>
+      <div id="snackbar__root" className="relative"></div>
     </html>
   );
 }

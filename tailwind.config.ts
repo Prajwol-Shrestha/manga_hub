@@ -21,7 +21,7 @@ const config: Config = {
         "6xl": "clamp(4.77rem, 7.48vw + 2.9rem, 8.88rem)",
       },
       colors: {
-        primary: '#53FF86',
+        primary: "#53FF86",
         secondary: {
           200: "#808080",
           300: "#828689",
@@ -34,6 +34,21 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+
+      keyframes: {
+        slideLeft: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        slideRight: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        slideLeft: "slideLeft 1s ease",
+        slideRight: "slideRight 1s ease",
       },
     },
   },
