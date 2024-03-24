@@ -29,7 +29,15 @@ export const POST = async (req) => {
   }
   try {
     const body = await req.json();
-    console.log(body, "body");
+    const alreadyExists = await prisma.bookmarks.findFirst({
+      where: {
+        AND: [{ mal_id: body.mal_id, userId: session.user.uid }],
+      },
+    });
+    if (alreadyExists) {
+      return NextResponse.json({ error: "Already Bookmarked" }, { status: 500 });
+    }
+
     const post = await prisma.bookmarks.create({
       data: { ...body, userId: session.user.uid },
     });

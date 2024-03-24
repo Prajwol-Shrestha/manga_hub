@@ -27,18 +27,20 @@ export default function BookmarkButton({
         body: JSON.stringify({ mal_id: stringMalId, title, image }),
       });
 
+      
       if (response.ok) {
         dispatch(
           showSnackbarAsync({
             severity: "success",
             message: "Manga Bookmarked Sucessfully",
           }),
-        );
-      } else {
+          );
+        } else {
+        const errorMessage = await response.json()
         dispatch(
           showSnackbarAsync({
             severity: "error",
-            message: response.statusText,
+            message: errorMessage.error,
           }),
         );
       }

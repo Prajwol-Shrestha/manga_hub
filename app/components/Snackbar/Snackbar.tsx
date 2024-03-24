@@ -16,7 +16,6 @@ const Snackbar = () => {
 
   const snackbarRoot = document.getElementById("snackbar__root");
   if (!snackbarRoot) {
-    // Return null or an alternative if the element is not found
     return null;
   }
 
@@ -36,11 +35,11 @@ const Snackbar = () => {
 
   return ReactDOM.createPortal(
     <div
-      className={`fixed right-5 top-10 z-50 rounded-md px-6 py-2 text-left capitalize text-white ${snackbarColor} ${animation}`}
+      className={`fixed right-5 top-10 z-50 rounded-sm px-5 py-3 text-left capitalize text-white ${snackbarColor} ${animation}`}
     >
-      <div className="pr-4">{message}</div>
+      <div className="pr-5">{message}</div>
       <div
-        className="absolute right-4 top-0.5 cursor-pointer text-lg"
+        className="absolute right-3 top-[1px] cursor-pointer text-xl"
         onClick={() => dispatch(closeSnackbar())}
       >
         &times;

@@ -47,7 +47,7 @@ export default function Page() {
         <form className="mt-6 flex flex-col gap-2" onSubmit={handleLogin}>
           <input
             type="email"
-            placeholder="Username"
+            placeholder="Email"
             className="rounded px-4 py-2"
             name="email"
             value={userInfo.email}
