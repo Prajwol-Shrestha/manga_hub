@@ -6,7 +6,7 @@ import Link from "next/link";
 import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 
 export default function SingleSliderFullWidth({ item }: { item: JikanManga }) {
-  const { images, mal_id, title, rank, synopsis } = item ?? {};
+  const { images, mal_id, title, rank, synopsis, url } = item ?? {};
 
 
   return (
@@ -28,13 +28,15 @@ export default function SingleSliderFullWidth({ item }: { item: JikanManga }) {
         </Typography>
 
         <div className="flex gap-4">
-          <IconButton
-            intent={"primary"}
-            text="Read Now"
-            icon={"material-symbols:play-circle-rounded"}
-            iconPlacement={"left"}
-            additionalClassNames="rounded-xl text-secondary-600 text-sm"
-          />
+          <Link href={url} target="_blank">
+            <IconButton
+              intent={"primary"}
+              text="Read Now"
+              icon={"material-symbols:play-circle-rounded"}
+              iconPlacement={"left"}
+              additionalClassNames="rounded-xl text-secondary-600 text-sm"
+            />
+          </Link>
           <Link href={`/details/${mal_id}`}>
             <IconButton
               intent={"primary"}

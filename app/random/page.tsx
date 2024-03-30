@@ -13,6 +13,7 @@ import Image from "next/image";
 import React from "react";
 import Overlay from "../components/Overlay/Overlay";
 import BookmarkButton from "../components/Buttons/BookmarkButton";
+import Link from "next/link";
 
 function SecondaryChild() {
   return (
@@ -26,7 +27,7 @@ function SecondaryChild() {
 export default async function Page() {
   const data = await fetcher(endpoints.randomManga);
   const mangaInfo = data.data as JikanManga;
-  const { images, title, synopsis, mal_id } = mangaInfo ?? {};
+  const { images, title, synopsis, mal_id, url } = mangaInfo ?? {};
 
   return (
     <section>
@@ -47,13 +48,15 @@ export default async function Page() {
               </Typography>
               <div></div>
               <div className="flex gap-4">
-                <IconButton
-                  intent={"primary"}
-                  text="Read Now"
-                  icon={"material-symbols:play-circle-rounded"}
-                  iconPlacement={"left"}
-                  additionalClassNames="rounded-xl text-secondary-600 text-sm"
-                />
+                <Link href={url} target="_blank">
+                  <IconButton
+                    intent={"primary"}
+                    text="Read Now"
+                    icon={"material-symbols:play-circle-rounded"}
+                    iconPlacement={"left"}
+                    additionalClassNames="rounded-xl text-secondary-600 text-sm"
+                  />
+                </Link>
                 <BookmarkButton mal_id={mal_id} title={title} image={images.webp.image_url}/>
               </div>
               <Typography

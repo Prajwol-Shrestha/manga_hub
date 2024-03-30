@@ -10,6 +10,7 @@ import { JikanManga } from "@/app/types/Manga/Jikan/JikanMangaTypes";
 import Image from "next/image";
 import React from "react";
 import BookmarkButton from "@/app/components/Buttons/BookmarkButton";
+import Link from "next/link";
 
 function SecondaryChild() {
   return (
@@ -25,7 +26,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const endpoint = endpoints.manga.concat(`/${slug}`);
   const data = await fetcher(endpoint);
   const mangaInfo = data.data as JikanManga;
-  const { images, title, synopsis, mal_id } = mangaInfo ?? {};
+  const { images, title, synopsis, mal_id, url } = mangaInfo ?? {};
 
   return (
     <section>
@@ -46,6 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               </Typography>
               <div></div>
               <div className="flex gap-4">
+                <Link href={url} target="_blank">
                 <IconButton
                   intent={"primary"}
                   text="Read Now"
@@ -53,6 +55,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                   iconPlacement={"left"}
                   additionalClassNames="rounded-xl text-secondary-600 text-sm"
                 />
+                </Link>
                 <BookmarkButton
                   mal_id={mal_id}
                   title={title}
